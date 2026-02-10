@@ -14,8 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
+        display: ['"Cinzel Decorative"', 'Cinzel', 'serif'],
         cinzel: ['Cinzel', 'serif'],
-        rajdhani: ['Rajdhani', 'sans-serif'],
+        body: ['Rajdhani', 'sans-serif'],
+        elegant: ['"Cormorant Garamond"', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -53,9 +55,9 @@ export default {
         },
         stranger: {
           red: "hsl(var(--stranger-red))",
-          glow: "hsl(var(--stranger-glow))",
+          crimson: "hsl(var(--stranger-crimson))",
+          ember: "hsl(var(--stranger-ember))",
           dark: "hsl(var(--stranger-dark))",
-          fog: "hsl(var(--stranger-fog))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

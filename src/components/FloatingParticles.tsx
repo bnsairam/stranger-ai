@@ -1,32 +1,34 @@
 import { useMemo } from "react";
 
 const FloatingParticles = () => {
-  const particles = useMemo(() => {
-    return Array.from({ length: 30 }, (_, i) => ({
+  const embers = useMemo(() => {
+    return Array.from({ length: 40 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 10,
-      duration: 8 + Math.random() * 12,
-      size: 2 + Math.random() * 4,
-      opacity: 0.3 + Math.random() * 0.7,
+      delay: Math.random() * 15,
+      duration: 10 + Math.random() * 18,
+      size: 1 + Math.random() * 3,
+      glowSize: 4 + Math.random() * 8,
+      hue: Math.random() > 0.5 ? 3 : 15 + Math.random() * 20,
     }));
   }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-      {particles.map((p) => (
+      {embers.map((e) => (
         <div
-          key={p.id}
-          className="absolute rounded-full bg-primary animate-float-particle"
+          key={e.id}
+          className="absolute rounded-full animate-float-up"
           style={{
-            left: `${p.left}%`,
-            bottom: "-10px",
-            width: `${p.size}px`,
-            height: `${p.size}px`,
-            animationDelay: `${p.delay}s`,
-            animationDuration: `${p.duration}s`,
-            opacity: p.opacity,
-            boxShadow: `0 0 ${p.size * 3}px hsl(0 100% 50% / 0.6)`,
+            left: `${e.left}%`,
+            bottom: "-20px",
+            width: `${e.size}px`,
+            height: `${e.size}px`,
+            background: `hsl(${e.hue} 90% 55%)`,
+            animationDelay: `${e.delay}s`,
+            animationDuration: `${e.duration}s`,
+            boxShadow: `0 0 ${e.glowSize}px hsl(${e.hue} 100% 50% / 0.5), 0 0 ${e.glowSize * 2}px hsl(${e.hue} 100% 50% / 0.2)`,
+            filter: 'blur(0.5px)',
           }}
         />
       ))}
