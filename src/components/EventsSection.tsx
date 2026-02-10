@@ -1,65 +1,116 @@
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
 
 const events = [
-  { name: "XENZO", subtitle: "Symposium", date: "5th February 2026", description: "The grand symposium — enter the Upside Down." },
-  { name: "Guest Lecture", subtitle: "Knowledge Portal", date: "19th February 2026", description: "Wisdom from the beyond. Minds that illuminate the dark." },
-  { name: "Expothon", subtitle: "Exhibition + Hackathon", date: "20th February 2026", description: "Build. Showcase. Survive the Expothon." },
-  { name: "Pratiyog'26", subtitle: "Main Event", date: "6th March 2026", description: "The ultimate showdown. Only the worthy prevail." },
+  {
+    name: "XENZO",
+    type: "Symposium",
+    date: "FEB 5",
+    year: "2026",
+    tagline: "Where dimensions collide.",
+    number: "01",
+  },
+  {
+    name: "Guest Lecture",
+    type: "Knowledge Portal",
+    date: "FEB 19",
+    year: "2026",
+    tagline: "Voices from the other side.",
+    number: "02",
+  },
+  {
+    name: "Expothon",
+    type: "Expo + Hackathon",
+    date: "FEB 20",
+    year: "2026",
+    tagline: "Build. Survive. Showcase.",
+    number: "03",
+  },
+  {
+    name: "Pratiyog'26",
+    type: "Main Event",
+    date: "MAR 6",
+    year: "2026",
+    tagline: "Only the worthy prevail.",
+    number: "04",
+  },
 ];
 
 const EventsSection = () => {
   return (
-    <section id="events" className="relative py-24 px-4">
-      <div className="max-w-5xl mx-auto">
+    <section id="events" className="relative py-32 px-4">
+      {/* Ambient glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/3 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="mb-20"
         >
-          <h2 className="font-cinzel text-4xl md:text-6xl font-bold text-primary text-glow-red mb-4">
-            EVENTS
+          <p className="font-body text-xs tracking-[0.5em] uppercase text-muted-foreground mb-3">
+            What awaits you
+          </p>
+          <h2 className="font-display text-4xl md:text-6xl text-primary text-glow-red">
+            Events
           </h2>
-          <div className="w-24 h-px bg-primary/50 mx-auto" />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Events list */}
+        <div className="space-y-0">
           {events.map((event, i) => (
             <motion.div
               key={event.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="group relative bg-card border border-border hover:border-primary/50 p-8 transition-all duration-500 box-glow-red hover:box-glow-red"
-              style={{ boxShadow: "none" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 15px hsl(0 100% 50% / 0.3), 0 0 45px hsl(0 100% 50% / 0.1)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="font-cinzel text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              {/* Divider */}
+              {i === 0 && <div className="divider-ember mb-0" />}
+              
+              <div className="group grid grid-cols-12 items-center py-8 md:py-10 border-b border-border/40 hover:border-primary/20 transition-all duration-500 cursor-default">
+                {/* Number */}
+                <div className="col-span-1 hidden md:block">
+                  <span className="font-body text-xs text-muted-foreground/40 tracking-widest">
+                    {event.number}
+                  </span>
+                </div>
+
+                {/* Date */}
+                <div className="col-span-3 md:col-span-2">
+                  <div className="font-cinzel text-sm md:text-base text-foreground/60 group-hover:text-primary/80 transition-colors duration-500">
+                    {event.date}
+                  </div>
+                  <div className="font-body text-xs text-muted-foreground/50">
+                    {event.year}
+                  </div>
+                </div>
+
+                {/* Name */}
+                <div className="col-span-5 md:col-span-4">
+                  <h3 className="font-cinzel text-lg md:text-2xl text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
                     {event.name}
                   </h3>
-                  <p className="text-muted-foreground font-rajdhani text-sm tracking-widest uppercase">
-                    {event.subtitle}
+                  <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground/60 mt-1">
+                    {event.type}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 text-primary/70">
-                  <Calendar size={16} />
-                  <span className="font-rajdhani text-sm">{event.date}</span>
+
+                {/* Tagline */}
+                <div className="col-span-4 md:col-span-4 text-right md:text-left">
+                  <p className="font-elegant italic text-sm text-muted-foreground/50 group-hover:text-muted-foreground/80 transition-colors duration-500">
+                    "{event.tagline}"
+                  </p>
+                </div>
+
+                {/* Decorative dot */}
+                <div className="col-span-0 md:col-span-1 hidden md:flex justify-end">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary group-hover:shadow-[0_0_8px_hsl(3_100%_50%/0.5)] transition-all duration-500" />
                 </div>
               </div>
-              <p className="text-muted-foreground font-rajdhani text-base leading-relaxed">
-                {event.description}
-              </p>
-              <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
           ))}
         </div>
