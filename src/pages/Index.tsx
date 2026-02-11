@@ -1,7 +1,6 @@
 import FloatingParticles from "@/components/FloatingParticles";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import LogoBanner from "@/components/LogoBanner";
 import EventsSection from "@/components/EventsSection";
 import CoordinatorsSection from "@/components/CoordinatorsSection";
 import ContactSection from "@/components/ContactSection";
@@ -12,7 +11,6 @@ const Index = () => {
       <FloatingParticles />
       <Navbar />
       <HeroSection />
-      <LogoBanner />
       <EventsSection />
       <CoordinatorsSection />
       <ContactSection />

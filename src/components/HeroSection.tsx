@@ -1,11 +1,48 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
+import logo25 from "@/assets/logos/25-years.png";
+import logoJprEducity from "@/assets/logos/jpr-educity.jpeg";
+import logoJec from "@/assets/logos/jec.png";
+import logoIet from "@/assets/logos/iet.png";
+import logoBuilding from "@/assets/logos/building.jpeg";
+import logoAiml from "@/assets/logos/aiml.png";
 
 const titleLetters = "XENZO".split("");
 
+const logos = [
+  { src: logoJprEducity, alt: "Jeppiaar Educity", className: "h-8 md:h-12" },
+  { src: logoJec, alt: "Jeppiaar Engineering College", className: "h-7 md:h-10" },
+  { src: logo25, alt: "25 Years of Legacy", className: "h-10 md:h-14" },
+  { src: logoAiml, alt: "AI & ML Department", className: "h-8 md:h-12" },
+  { src: logoIet, alt: "IET", className: "h-6 md:h-9" },
+  { src: logoBuilding, alt: "JEC Campus", className: "h-7 md:h-10 rounded-sm" },
+];
+
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Logos at top */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 2.5 }}
+        className="absolute top-16 md:top-20 left-0 right-0 z-30 px-4"
+      >
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+          {logos.map((logo, i) => (
+            <motion.img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 2.7 + i * 0.08 }}
+              className={`${logo.className} w-auto object-contain opacity-75 hover:opacity-100 transition-opacity duration-300`}
+            />
+          ))}
+        </div>
+      </motion.div>
+
       {/* Layered background */}
       <div className="absolute inset-0">
         <img
