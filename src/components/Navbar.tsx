@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logoJec from "@/assets/logos/jec.png";
 
 const navItems = [
   { label: "Events", href: "#events" },
@@ -31,8 +32,8 @@ const Navbar = () => {
         }`}
       >
         <div className="max-w-6xl mx-auto px-5 md:px-6 py-4 flex items-center justify-between">
-          <a href="#" className="font-display text-sm text-primary tracking-[0.15em] text-glow-subtle">
-            XENZO
+          <a href="#" className="flex items-center gap-2">
+            <img src={logoJec} alt="JEC" className="h-8 md:h-10 w-auto object-contain" />
           </a>
 
           {/* Desktop nav */}
