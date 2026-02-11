@@ -4,16 +4,340 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <!-- TODO: Set the document title to the name of your application -->
-    <title> Pratiyog'26 | Jeppiaar Engineering College</title>
-    <meta name="description" content="XENZO Pratiyog'26 - AI & ML Department Symposium at Jeppiaar Engineering College, Chennai" />
+    <title>Pratiyog'26 | Jeppiaar Engineering College</title>
+    <meta name="description" content="Pratiyog'26 - AI & ML Department Symposium at Jeppiaar Engineering College, Chennai" />
     <meta name="author" content="Jeppiaar Engineering College" />
     <meta property="og:title" content="Pratiyog'26" />
     <meta property="og:description" content="AI & ML Department Symposium at Jeppiaar Engineering College" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Cinzel', 'Georgia', serif;
+        background: linear-gradient(135deg, #1a0000 0%, #4a0000 50%, #2d0000 100%);
+        color: #fff;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 3rem;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .logo img {
+        height: 50px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #ff4444;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+          radial-gradient(ellipse at 20% 30%, rgba(139, 0, 0, 0.3) 0%, transparent 50%),
+          radial-gradient(ellipse at 80% 70%, rgba(178, 34, 34, 0.2) 0%, transparent 50%);
+        animation: pulse 8s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 0.8; }
+      }
+
+      .icon-row {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        z-index: 1;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .icon-row img {
+        height: 60px;
+        width: auto;
+        opacity: 0.8;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .icon-row img:hover {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+        color: #999;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        z-index: 1;
+        font-style: italic;
+        text-align: center;
+      }
+
+      .dept-text {
+        font-size: 0.75rem;
+        letter-spacing: 6px;
+        color: #666;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        z-index: 1;
+        text-align: center;
+      }
+
+      .main-title {
+        font-size: clamp(4rem, 15vw, 12rem);
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        color: #ff2222;
+        text-shadow: 
+          0 0 20px rgba(255, 34, 34, 0.8),
+          0 0 40px rgba(255, 34, 34, 0.6),
+          0 0 60px rgba(255, 34, 34, 0.4),
+          5px 5px 10px rgba(0, 0, 0, 0.8);
+        margin-bottom: 1rem;
+        z-index: 1;
+        animation: glow 3s ease-in-out infinite;
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        text-align: center;
+      }
+
+      @keyframes glow {
+        0%, 100% {
+          text-shadow: 
+            0 0 20px rgba(255, 34, 34, 0.8),
+            0 0 40px rgba(255, 34, 34, 0.6),
+            0 0 60px rgba(255, 34, 34, 0.4),
+            5px 5px 10px rgba(0, 0, 0, 0.8);
+        }
+        50% {
+          text-shadow: 
+            0 0 30px rgba(255, 34, 34, 1),
+            0 0 60px rgba(255, 34, 34, 0.8),
+            0 0 90px rgba(255, 34, 34, 0.6),
+            5px 5px 10px rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      .year {
+        font-size: 2rem;
+        letter-spacing: 0.5em;
+        color: #ccc;
+        margin-bottom: 2rem;
+        z-index: 1;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .quote {
+        font-size: 1rem;
+        color: #888;
+        font-style: italic;
+        margin-bottom: 3rem;
+        z-index: 1;
+        max-width: 600px;
+        text-align: center;
+      }
+
+      .cta-button {
+        padding: 1rem 3rem;
+        background: transparent;
+        border: 2px solid #ff4444;
+        color: #ff4444;
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 1;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-button:hover {
+        background: #ff4444;
+        color: #000;
+        box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+        transform: translateY(-2px);
+      }
+
+      .particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #ff4444;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: float 10s infinite;
+      }
+
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.5;
+        }
+        90% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(100px);
+          opacity: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          padding: 1rem;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+          font-size: 0.8rem;
+        }
+
+        .icon-row {
+          gap: 1rem;
+        }
+
+        .icon-row img {
+          height: 40px;
+        }
+
+        .main-title {
+          letter-spacing: 0.1em;
+        }
+
+        .year {
+          font-size: 1.5rem;
+          letter-spacing: 0.3em;
+        }
+
+        .cta-button {
+          padding: 0.8rem 2rem;
+          font-size: 0.8rem;
+        }
+
+        .subtitle {
+          font-size: 0.7rem;
+          letter-spacing: 2px;
+        }
+
+        .dept-text {
+          font-size: 0.65rem;
+          letter-spacing: 3px;
+        }
+      }
+
+      #root {
+        display: none;
+      }
+    </style>
   </head>
   <body>
+    <nav>
+      <div class="logo">
+        <img src="/logo.png" alt="Jeppiaar Engineering College" onerror="this.style.display='none'" />
+      </div>
+      <ul class="nav-links">
+        <li><a href="#events">EVENTS</a></li>
+        <li><a href="#coordinators">COORDINATORS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <div class="icon-row">
+        <img src="/icon1.png" alt="Icon 1" onerror="this.style.display='none'" />
+        <img src="/logo.png" alt="College Logo" onerror="this.style.display='none'" />
+        <img src="/icon2.png" alt="Icon 2" onerror="this.style.display='none'" />
+        <img src="/icon3.png" alt="Icon 3" onerror="this.style.display='none'" />
+        <img src="/icon4.png" alt="Icon 4" onerror="this.style.display='none'" />
+        <img src="/icon5.png" alt="Icon 5" onerror="this.style.display='none'" />
+      </div>
+
+      <p class="subtitle">Jeppiaar Engineering College presents</p>
+      <p class="dept-text">DEPT. OF AI & MACHINE LEARNING</p>
+      
+      <h1 class="main-title">PRATIYOG</h1>
+      
+      <p class="year">PRATIYOG'26</p>
+      
+      <p class="quote">"Some doors should never be opened"</p>
+      
+      <a href="#events" class="cta-button">ENTER THE UPSIDE DOWN ↓</a>
+
+      <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+      <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+      <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+      <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+      <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+      <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
+      <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
+      <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
