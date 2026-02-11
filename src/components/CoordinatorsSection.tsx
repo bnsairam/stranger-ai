@@ -28,20 +28,28 @@ const CoordinatorsSection = () => {
           transition={{ duration: 0.6 }}
           className="mb-10 md:mb-14"
         >
-          <div className="card-stranger p-6 md:p-10 max-w-lg mx-auto md:mx-0">
-            <p className="font-body text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase text-primary/60 mb-3 md:mb-4">
-              Faculty Coordinator
-            </p>
-            <h3 className="font-cinzel text-lg md:text-2xl text-foreground mb-1">
-              Dr. A. Vidhya
-            </h3>
-            <a
-              href="tel:+919840187449"
-              className="inline-flex items-center gap-2 mt-2 md:mt-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
-            >
-              <Phone size={13} className="text-primary/50 group-hover:text-primary transition-colors" />
-              <span>+91 98401 87449</span>
-            </a>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+            {[
+              { name: "Dr. A. Vidhya", phone: "+91 98401 87449", tel: "+919840187449" },
+              { name: "Mr. B.N. Sairam", phone: "+91 76039 76686", tel: "+917603976686" },
+              { name: "Ms. P.S. Indhumathi", phone: "+91 77085 10599", tel: "+917708510599" },
+            ].map((faculty) => (
+              <div key={faculty.name} className="card-stranger p-6 md:p-8">
+                <p className="font-body text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase text-primary/60 mb-3 md:mb-4">
+                  Faculty Coordinator
+                </p>
+                <h3 className="font-cinzel text-base md:text-lg text-foreground mb-1">
+                  {faculty.name}
+                </h3>
+                <a
+                  href={`tel:${faculty.tel}`}
+                  className="inline-flex items-center gap-2 mt-2 md:mt-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
+                >
+                  <Phone size={13} className="text-primary/50 group-hover:text-primary transition-colors" />
+                  <span>{faculty.phone}</span>
+                </a>
+              </div>
+            ))}
           </div>
         </motion.div>
 
