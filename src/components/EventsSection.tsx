@@ -4,34 +4,16 @@ const events = [
   {
     name: "Group Dance",
     type: "The Velvet Crew",
-    date: "FEB 5",
-    year: "2026",
-    tagline: "Where dimensions collide.",
+    tagline: "4–12 members · Any style · ₹500 per team",
+    fee: "₹500",
     number: "01",
   },
   {
-    name: "Guest Lecture",
-    type: "Knowledge Portal",
-    date: "FEB 19",
-    year: "2026",
-    tagline: "Voices from the other side.",
+    name: "Ramp Walk",
+    type: "The Lavish Lane",
+    tagline: "8–12 members · Themed fashion · ₹1000 per team",
+    fee: "₹1000",
     number: "02",
-  },
-  {
-    name: "Expothon",
-    type: "Expo + Hackathon",
-    date: "FEB 20",
-    year: "2026",
-    tagline: "Build. Survive. Showcase.",
-    number: "03",
-  },
-  {
-    name: "Pratiyog'26",
-    type: "Main Event",
-    date: "MAR 6",
-    year: "2026",
-    tagline: "Only the worthy prevail.",
-    number: "04",
   },
 ];
 
@@ -76,10 +58,10 @@ const EventsSection = () => {
                   </span>
                 </div>
                 <div className="col-span-2">
-                  <div className="font-cinzel text-base text-foreground/60 group-hover:text-primary/80 transition-colors duration-500">
-                    {event.date}
+                  <div className="font-cinzel text-base text-primary/80 font-semibold">
+                    {event.fee}
                   </div>
-                  <div className="font-body text-xs text-muted-foreground/50">{event.year}</div>
+                  <div className="font-body text-xs text-muted-foreground/50">per team</div>
                 </div>
                 <div className="col-span-4">
                   <h3 className="font-cinzel text-2xl text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
@@ -111,8 +93,8 @@ const EventsSection = () => {
                     </h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-cinzel text-xs text-foreground/50">
-                      {event.date}
+                    <span className="font-cinzel text-xs text-primary/70 font-semibold">
+                      {event.fee}
                     </span>
                   </div>
                 </div>
