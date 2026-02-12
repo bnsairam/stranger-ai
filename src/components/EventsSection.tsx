@@ -18,6 +18,9 @@ const events = [
 ];
 
 const EventsSection = () => {
+  const googleFormUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSfSpTsRhZDTRFCRvkTSksLzRy-Kg0-68jwW3PStLwkNfrXeng/viewform";
+
   return (
     <section id="events" className="relative py-20 md:py-32 px-5 md:px-4">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] md:w-[600px] h-[200px] md:h-[300px] bg-primary/[0.03] rounded-full blur-[100px] pointer-events-none" />
@@ -38,7 +41,6 @@ const EventsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Mobile: cards, Desktop: editorial list */}
         <div className="space-y-0">
           {events.map((event, i) => (
             <motion.div
@@ -50,10 +52,15 @@ const EventsSection = () => {
             >
               {i === 0 && <div className="divider-ember" />}
 
-              {/* Desktop layout */}
-              <div className="group hidden md:grid grid-cols-12 items-center py-10 border-b border-border/40 hover:border-primary/20 transition-all duration-500 cursor-default">
+              {/* Desktop layout – clickable */}
+              <a
+                href={googleFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group hidden md:grid grid-cols-12 items-center py-10 border-b border-border/40 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 cursor-pointer"
+              >
                 <div className="col-span-1">
-                  <span className="font-body text-xs text-muted-foreground/40 tracking-widest">
+                  <span className="font-body text-xs text-muted-foreground/50 tracking-widest">
                     {event.number}
                   </span>
                 </div>
@@ -72,20 +79,25 @@ const EventsSection = () => {
                   </p>
                 </div>
                 <div className="col-span-4">
-                  <p className="font-elegant italic text-sm text-muted-foreground/50 group-hover:text-muted-foreground/80 transition-colors duration-500">
+                  <p className="font-elegant italic text-sm text-muted-foreground/60 group-hover:text-muted-foreground/90 transition-colors duration-500">
                     "{event.tagline}"
                   </p>
                 </div>
                 <div className="col-span-1 flex justify-end">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/20 group-hover:bg-primary group-hover:shadow-[0_0_8px_hsl(3_100%_50%/0.5)] transition-all duration-500" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary group-hover:shadow-[0_0_12px_hsl(3_100%_50%/0.6)] transition-all duration-500" />
                 </div>
-              </div>
+              </a>
 
-              {/* Mobile layout — stacked card */}
-              <div className="group md:hidden py-6 border-b border-border/30 hover:border-primary/20 transition-all duration-500">
+              {/* Mobile layout – stacked card, clickable */}
+              <a
+                href={googleFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group md:hidden block py-6 border-b border-border/30 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 cursor-pointer"
+              >
                 <div className="flex items-baseline justify-between mb-2">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-body text-[10px] text-muted-foreground/30 tracking-widest">
+                    <span className="font-body text-[10px] text-muted-foreground/40 tracking-widest">
                       {event.number}
                     </span>
                     <h3 className="font-cinzel text-lg text-foreground group-hover:text-primary transition-colors duration-500">
@@ -93,22 +105,30 @@ const EventsSection = () => {
                     </h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-cinzel text-xs text-primary/70 font-semibold">
+                    <span className="font-cinzel text-xs text-primary/80 font-semibold">
                       {event.fee}
                     </span>
                   </div>
                 </div>
+
                 <div className="flex items-center justify-between pl-8">
-                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground/50">
+                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60">
                     {event.type}
                   </p>
-                  <p className="font-elegant italic text-xs text-muted-foreground/40">
+                  <p className="font-elegant italic text-xs text-muted-foreground/50 group-hover:text-muted-foreground/80 transition-colors duration-500">
                     {event.tagline}
                   </p>
                 </div>
-              </div>
+              </a>
             </motion.div>
           ))}
+        </div>
+
+        {/* Optional: small hint text */}
+        <div className="mt-10 text-center">
+          <p className="text-sm text-muted-foreground/70">
+            Click any event to register → opens registration form
+          </p>
         </div>
       </div>
     </section>
