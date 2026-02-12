@@ -2,8 +2,8 @@ import { motion } from "framer-motion";
 
 const events = [
   {
-    name: "XENZO",
-    type: "Symposium",
+    name: "Group Dance",
+    type: "The Velvet Crew",
     date: "FEB 5",
     year: "2026",
     tagline: "Where dimensions collide.",

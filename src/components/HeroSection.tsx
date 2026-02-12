@@ -7,7 +7,7 @@ import logoIet from "@/assets/logos/iet.png";
 import logoBuilding from "@/assets/logos/building.jpeg";
 import logoAiml from "@/assets/logos/aiml.png";
 
-const titleLetters = "XENZO".split("");
+const titleLetters = "PRATIYOG".split("");
 
 const logos = [
   { src: logoJprEducity, alt: "Jeppiaar Educity", className: "h-8 md:h-12" },
@@ -70,8 +70,8 @@ const HeroSection = () => {
           transition={{ duration: 1.5, delay: 0.3 }}
           className="mb-2 md:mb-3"
         >
-          <p className="font-elegant italic text-muted-foreground text-sm md:text-lg tracking-[0.1em] md:tracking-[0.15em]">
-            Jeppiaar Engineering College presents
+          <p className="font-elegant italic text-foreground/80 text-sm md:text-lg tracking-[0.1em] md:tracking-[0.15em]">
+            Jeppiaar Educity presents
           </p>
         </motion.div>
 
@@ -79,15 +79,15 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="mb-8 md:mb-10"
+          className="mb-4 md:mb-6"
         >
-          <p className="font-body text-foreground/50 text-[10px] md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-light leading-relaxed">
-            Dept. of AI & Machine Learning
+          <p className="font-body text-foreground/70 text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-medium leading-relaxed">
+            Inter College Culturals
           </p>
         </motion.div>
 
-        {/* XENZO */}
-        <div className="flex items-center justify-center gap-1 sm:gap-2 md:gap-4 mb-3">
+        {/* PRATIYOG */}
+        <div className="flex items-center justify-center gap-0.5 sm:gap-1 md:gap-3 mb-1">
           {titleLetters.map((letter, i) => (
             <motion.span
               key={i}
@@ -95,10 +95,10 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0, rotateX: 0 }}
               transition={{
                 duration: 0.8,
-                delay: 0.9 + i * 0.12,
+                delay: 0.9 + i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="font-display text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-bold text-primary text-glow-red-hero animate-flicker inline-block leading-none"
+              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-bold text-primary text-glow-red-hero animate-flicker inline-block leading-none"
               style={{ animationDelay: `${i * 0.8}s` }}
             >
               {letter}
@@ -106,31 +106,43 @@ const HeroSection = () => {
           ))}
         </div>
 
+        {/* 2K26 */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-4 md:mb-6"
+        >
+          <span className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-primary/90 text-glow-red tracking-[0.2em] md:tracking-[0.4em]">
+            2K26
+          </span>
+        </motion.div>
+
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.2, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
           className="divider-ember w-32 sm:w-48 md:w-72 mx-auto mb-5 md:mb-6"
         />
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.1 }}
+          transition={{ duration: 0.8, delay: 2.3 }}
         >
-          <h2 className="font-cinzel text-lg sm:text-xl md:text-3xl text-foreground/90 tracking-[0.2em] md:tracking-[0.3em] font-normal">
-            PRATIYOG'26
+          <h2 className="font-cinzel text-base sm:text-lg md:text-2xl text-foreground/90 tracking-[0.15em] md:tracking-[0.25em] font-normal">
+            A National Level Cultural Fest
           </h2>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2.5 }}
+          transition={{ duration: 1, delay: 2.7 }}
           className="mt-3 md:mt-4"
         >
-          <p className="font-elegant italic text-muted-foreground text-xs md:text-base tracking-wider">
-            "Some doors should never be opened."
+          <p className="font-body text-foreground/60 text-xs md:text-sm tracking-[0.2em] uppercase">
+            Jeppiaar Engineering College, Chennai
           </p>
         </motion.div>
 
@@ -138,15 +150,22 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 3 }}
-          className="mt-10 md:mt-14"
+          className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
             href="#events"
             className="group relative inline-flex items-center gap-3 border border-primary/30 px-7 md:px-10 py-3 md:py-4 font-body text-primary/90 tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs hover:border-primary/60 transition-all duration-500 overflow-hidden"
           >
-            <span className="relative z-10">Enter the Upside Down</span>
+            <span className="relative z-10">Explore Events</span>
             <span className="relative z-10 text-primary/50 group-hover:translate-x-1 transition-transform duration-300">↓</span>
             <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500" />
+          </a>
+          <a
+            href="#register"
+            className="group relative inline-flex items-center gap-3 bg-primary/90 hover:bg-primary px-7 md:px-10 py-3 md:py-4 font-body text-primary-foreground tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs transition-all duration-500 overflow-hidden"
+          >
+            <span className="relative z-10">Register Now</span>
+            <span className="relative z-10 opacity-70 group-hover:translate-x-1 transition-transform duration-300">→</span>
           </a>
         </motion.div>
       </div>
