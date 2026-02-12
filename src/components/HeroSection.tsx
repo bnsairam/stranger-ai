@@ -4,18 +4,16 @@ import logo25 from "@/assets/logos/25-years.png";
 import logoJprEducity from "@/assets/logos/jpr-educity.jpeg";
 import logoJec from "@/assets/logos/jec.png";
 import logoIet from "@/assets/logos/iet.png";
-import logoBuilding from "@/assets/logos/building.jpeg";
 import logoAiml from "@/assets/logos/aiml.png";
 
 const titleLetters = "PRATIYOG".split("");
 
 const logos = [
-  { src: logoJprEducity, alt: "Jeppiaar Educity", className: "h-8 md:h-12" },
-  { src: logoJec, alt: "Jeppiaar Engineering College", className: "h-7 md:h-10" },
-  { src: logo25, alt: "25 Years of Legacy", className: "h-10 md:h-14" },
-  { src: logoAiml, alt: "AI & ML Department", className: "h-8 md:h-12" },
-  { src: logoIet, alt: "IET", className: "h-6 md:h-9" },
-  { src: logoBuilding, alt: "JEC Campus", className: "h-7 md:h-10 rounded-sm" },
+  { src: logoJprEducity, alt: "Jeppiaar Educity", className: "h-12 md:h-16" },
+  { src: logoJec, alt: "Jeppiaar Engineering College", className: "h-11 md:h-14" },
+  { src: logo25, alt: "25 Years of Legacy", className: "h-14 md:h-20" },
+  { src: logoAiml, alt: "AI & ML Department", className: "h-12 md:h-16" },
+  { src: logoIet, alt: "IET", className: "h-10 md:h-13" },
 ];
 
 const HeroSection = () => {
