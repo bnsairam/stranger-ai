@@ -1,7 +1,7 @@
 import FloatingParticles from "@/components/FloatingParticles";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import EventsSection from "@/components/EventsSection";
+// Events are handled via Google Form registration
 import CoordinatorsSection from "@/components/CoordinatorsSection";
 import ContactSection from "@/components/ContactSection";
 import RegistrationSection from "@/components/RegistrationSection";
@@ -12,7 +12,6 @@ const Index = () => {
       <FloatingParticles />
       <Navbar />
       <HeroSection />
-      <EventsSection />
       <RegistrationSection />
       <CoordinatorsSection />
       <ContactSection />

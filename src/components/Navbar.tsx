@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import logoJec from "@/assets/logos/jec.png";
 
 const navItems = [
-  { label: "Events", href: "#events" },
+  { label: "Register", href: "#register" },
   { label: "Coordinators", href: "#coordinators" },
   { label: "Contact", href: "#contact" },
 ];

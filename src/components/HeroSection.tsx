@@ -153,7 +153,7 @@ const HeroSection = () => {
           className="mt-10 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="#events"
+            href="#register"
             className="group relative inline-flex items-center gap-3 border border-primary/30 px-7 md:px-10 py-3 md:py-4 font-body text-primary/90 tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs hover:border-primary/60 transition-all duration-500 overflow-hidden"
           >
             <span className="relative z-10">Explore Events</span>
