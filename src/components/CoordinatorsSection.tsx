@@ -12,10 +12,10 @@ const CoordinatorsSection = () => {
           transition={{ duration: 0.8 }}
           className="mb-12 md:mb-20"
         >
-          <p className="font-body text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.5em] uppercase text-muted-foreground mb-2 md:mb-3">
+          <p className="font-body text-xs md:text-sm tracking-[0.4em] md:tracking-[0.5em] uppercase text-muted-foreground mb-2 md:mb-3">
             Your guides through the dark
           </p>
-          <h2 className="font-display text-3xl md:text-6xl text-primary text-glow-red">
+          <h2 className="font-display text-4xl md:text-7xl text-primary text-glow-red">
             Coordinators
           </h2>
         </motion.div>
@@ -35,17 +35,17 @@ const CoordinatorsSection = () => {
               { name: "Ms. P.S. Indhumathi", phone: "+91 77085 10599", tel: "+917708510599" },
             ].map((faculty) => (
               <div key={faculty.name} className="card-stranger p-6 md:p-8">
-                <p className="font-body text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase text-primary/60 mb-3 md:mb-4">
+                <p className="font-body text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.5em] uppercase text-primary/70 mb-3 md:mb-4">
                   Faculty Coordinator
                 </p>
-                <h3 className="font-cinzel text-base md:text-lg text-foreground mb-1">
+                <h3 className="font-cinzel text-lg md:text-xl text-foreground mb-1">
                   {faculty.name}
                 </h3>
                 <a
                   href={`tel:${faculty.tel}`}
-                  className="inline-flex items-center gap-2 mt-2 md:mt-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
+                  className="inline-flex items-center gap-2 mt-2 md:mt-3 font-body text-base text-muted-foreground hover:text-primary transition-colors duration-300 group"
                 >
-                  <Phone size={13} className="text-primary/50 group-hover:text-primary transition-colors" />
+                  <Phone size={15} className="text-primary/60 group-hover:text-primary transition-colors" />
                   <span>{faculty.phone}</span>
                 </a>
               </div>
@@ -67,17 +67,17 @@ const CoordinatorsSection = () => {
               transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
             >
               <div className="card-stranger p-6 md:p-8">
-                <p className="font-body text-[9px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase text-primary/60 mb-3 md:mb-4">
+                <p className="font-body text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.5em] uppercase text-primary/70 mb-3 md:mb-4">
                   Student Coordinator
                 </p>
-                <h3 className="font-cinzel text-base md:text-lg text-foreground mb-1">
+                <h3 className="font-cinzel text-lg md:text-xl text-foreground mb-1">
                   {coord.name}
                 </h3>
                 <a
                   href={`tel:${coord.tel}`}
-                  className="inline-flex items-center gap-2 mt-2 md:mt-3 font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
+                  className="inline-flex items-center gap-2 mt-2 md:mt-3 font-body text-base text-muted-foreground hover:text-primary transition-colors duration-300 group"
                 >
-                  <Phone size={13} className="text-primary/50 group-hover:text-primary transition-colors" />
+                  <Phone size={15} className="text-primary/60 group-hover:text-primary transition-colors" />
                   <span>{coord.phone}</span>
                 </a>
               </div>
