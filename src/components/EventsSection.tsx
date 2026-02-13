@@ -33,10 +33,10 @@ const EventsSection = () => {
           transition={{ duration: 0.8 }}
           className="mb-12 md:mb-20"
         >
-          <p className="font-body text-[10px] md:text-xs tracking-[0.4em] md:tracking-[0.5em] uppercase text-muted-foreground mb-2 md:mb-3">
+          <p className="font-body text-xs md:text-sm tracking-[0.4em] md:tracking-[0.5em] uppercase text-muted-foreground mb-2 md:mb-3">
             What awaits you
           </p>
-          <h2 className="font-display text-3xl md:text-6xl text-primary text-glow-red">
+          <h2 className="font-display text-4xl md:text-7xl text-primary text-glow-red">
             Events
           </h2>
         </motion.div>
@@ -60,31 +60,31 @@ const EventsSection = () => {
                 className="group hidden md:grid grid-cols-12 items-center py-10 border-b border-border/40 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 cursor-pointer"
               >
                 <div className="col-span-1">
-                  <span className="font-body text-xs text-muted-foreground/50 tracking-widest">
+                  <span className="font-body text-sm text-muted-foreground/60 tracking-widest">
                     {event.number}
                   </span>
                 </div>
                 <div className="col-span-2">
-                  <div className="font-cinzel text-base text-primary/80 font-semibold">
+                  <div className="font-cinzel text-lg text-primary font-semibold">
                     {event.fee}
                   </div>
-                  <div className="font-body text-xs text-muted-foreground/50">per team</div>
+                  <div className="font-body text-sm text-muted-foreground/70">per team</div>
                 </div>
                 <div className="col-span-4">
-                  <h3 className="font-cinzel text-2xl text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
+                  <h3 className="font-cinzel text-3xl text-foreground group-hover:text-primary transition-colors duration-500 leading-tight">
                     {event.name}
                   </h3>
-                  <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground/60 mt-1">
+                  <p className="font-body text-sm tracking-[0.2em] uppercase text-muted-foreground mt-1">
                     {event.type}
                   </p>
                 </div>
-                <div className="col-span-4">
-                  <p className="font-elegant italic text-sm text-muted-foreground/60 group-hover:text-muted-foreground/90 transition-colors duration-500">
+                <div className="col-span-3">
+                  <p className="font-elegant italic text-base text-foreground/60 group-hover:text-foreground/80 transition-colors duration-500">
                     "{event.tagline}"
                   </p>
                 </div>
-                <div className="col-span-1 flex justify-end">
-                  <span className="font-body text-[10px] tracking-[0.3em] uppercase text-primary/80 border border-primary/30 px-4 py-1.5 group-hover:bg-primary/10 group-hover:border-primary/50 transition-all duration-500">
+                <div className="col-span-2 flex justify-end">
+                  <span className="font-body text-xs tracking-[0.3em] uppercase text-primary border border-primary/40 px-5 py-2 group-hover:bg-primary/10 group-hover:border-primary/60 transition-all duration-500">
                     Register →
                   </span>
                 </div>
@@ -97,27 +97,27 @@ const EventsSection = () => {
                 rel="noopener noreferrer"
                 className="group md:hidden block py-6 border-b border-border/30 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500 cursor-pointer"
               >
-                <div className="flex items-baseline justify-between mb-2">
+                <div className="flex items-baseline justify-between mb-3">
                   <div className="flex items-baseline gap-3">
-                    <span className="font-body text-[10px] text-muted-foreground/40 tracking-widest">
+                    <span className="font-body text-xs text-muted-foreground/50 tracking-widest">
                       {event.number}
                     </span>
-                    <h3 className="font-cinzel text-lg text-foreground group-hover:text-primary transition-colors duration-500">
+                    <h3 className="font-cinzel text-xl text-foreground group-hover:text-primary transition-colors duration-500">
                       {event.name}
                     </h3>
                   </div>
                   <div className="text-right">
-                    <span className="font-cinzel text-xs text-primary/80 font-semibold">
+                    <span className="font-cinzel text-sm text-primary font-semibold">
                       {event.fee}
                     </span>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between pl-8">
-                  <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60">
+                  <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
                     {event.type}
                   </p>
-                  <span className="font-body text-[10px] tracking-[0.2em] uppercase text-primary/80 border border-primary/30 px-3 py-1 group-hover:bg-primary/10 transition-all duration-500">
+                  <span className="font-body text-xs tracking-[0.2em] uppercase text-primary border border-primary/40 px-4 py-1.5 group-hover:bg-primary/10 transition-all duration-500">
                     Register →
                   </span>
                 </div>
@@ -128,7 +128,7 @@ const EventsSection = () => {
 
         {/* Optional: small hint text */}
         <div className="mt-10 text-center">
-          <p className="text-sm text-muted-foreground/70">
+          <p className="text-base text-muted-foreground">
             Click any event to register → opens registration form
           </p>
         </div>
