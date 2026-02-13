@@ -84,7 +84,9 @@ const EventsSection = () => {
                   </p>
                 </div>
                 <div className="col-span-1 flex justify-end">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover:bg-primary group-hover:shadow-[0_0_12px_hsl(3_100%_50%/0.6)] transition-all duration-500" />
+                  <span className="font-body text-[10px] tracking-[0.3em] uppercase text-primary/80 border border-primary/30 px-4 py-1.5 group-hover:bg-primary/10 group-hover:border-primary/50 transition-all duration-500">
+                    Register →
+                  </span>
                 </div>
               </a>
 
@@ -115,9 +117,9 @@ const EventsSection = () => {
                   <p className="font-body text-[10px] tracking-[0.2em] uppercase text-muted-foreground/60">
                     {event.type}
                   </p>
-                  <p className="font-elegant italic text-xs text-muted-foreground/50 group-hover:text-muted-foreground/80 transition-colors duration-500">
-                    {event.tagline}
-                  </p>
+                  <span className="font-body text-[10px] tracking-[0.2em] uppercase text-primary/80 border border-primary/30 px-3 py-1 group-hover:bg-primary/10 transition-all duration-500">
+                    Register →
+                  </span>
                 </div>
               </a>
             </motion.div>
