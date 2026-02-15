@@ -9,7 +9,7 @@ const FloatingParticles = () => {
       duration: 10 + Math.random() * 18,
       size: 1 + Math.random() * 3,
       glowSize: 4 + Math.random() * 8,
-      hue: Math.random() > 0.5 ? 3 : 15 + Math.random() * 20,
+      hue: Math.random() > 0.5 ? 48 : 270 + Math.random() * 20,
     }));
   }, []);
 
