@@ -47,16 +47,25 @@ const HeroSection = () => {
           src={heroBg}
           alt=""
           className="w-full h-full object-cover scale-110 md:scale-105"
-          style={{ filter: "saturate(0.7) brightness(0.6)" }}
+          style={{ filter: "saturate(0.5) brightness(0.4) hue-rotate(240deg)" }}
         />
+        {/* Deep purple vignette */}
         <div className="absolute inset-0" style={{
           background: `
-            radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, hsl(0 0% 3% / 0.5) 60%, hsl(0 0% 3% / 0.97) 100%),
-            linear-gradient(to bottom, hsl(0 0% 3% / 0.4) 0%, transparent 30%, transparent 50%, hsl(0 0% 3%) 100%)
+            radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, hsl(270 30% 4% / 0.6) 60%, hsl(270 30% 4% / 0.98) 100%),
+            linear-gradient(to bottom, hsl(270 30% 4% / 0.5) 0%, transparent 30%, transparent 50%, hsl(270 30% 4%) 100%)
           `
         }} />
+        {/* Yellow glow from top */}
         <div className="absolute inset-0" style={{
-          background: `radial-gradient(ellipse 50% 40% at 50% 0%, hsl(3 80% 48% / 0.08) 0%, transparent 100%)`
+          background: `radial-gradient(ellipse 40% 30% at 50% 0%, hsl(48 95% 55% / 0.06) 0%, transparent 100%)`
+        }} />
+        {/* Purple glow from bottom corners */}
+        <div className="absolute inset-0" style={{
+          background: `
+            radial-gradient(ellipse 40% 50% at 0% 100%, hsl(280 60% 45% / 0.08) 0%, transparent 70%),
+            radial-gradient(ellipse 40% 50% at 100% 100%, hsl(280 60% 45% / 0.08) 0%, transparent 70%)
+          `
         }} />
       </div>
 
@@ -79,12 +88,12 @@ const HeroSection = () => {
           transition={{ duration: 1.2, delay: 0.6 }}
           className="mb-4 md:mb-6"
         >
-          <p className="font-body text-foreground/70 text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-medium leading-relaxed">
+          <p className="font-body text-accent/80 text-xs md:text-sm tracking-[0.3em] md:tracking-[0.5em] uppercase font-medium leading-relaxed">
             Inter College Culturals
           </p>
         </motion.div>
 
-        {/* PRATIYOG */}
+        {/* PRATIYOG — gradient text */}
         <div className="flex items-center justify-center gap-0.5 sm:gap-1 md:gap-3 mb-1">
           {titleLetters.map((letter, i) => (
             <motion.span
@@ -96,8 +105,15 @@ const HeroSection = () => {
                 delay: 0.9 + i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-bold text-primary text-glow-red-hero animate-flicker inline-block leading-none"
-              style={{ animationDelay: `${i * 0.8}s` }}
+              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-bold inline-block leading-none animate-flicker"
+              style={{
+                animationDelay: `${i * 0.8}s`,
+                background: `linear-gradient(135deg, hsl(48 95% 60%) 0%, hsl(40 100% 50%) 40%, hsl(280 60% 55%) 100%)`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                filter: `drop-shadow(0 0 12px hsl(48 100% 55% / 0.5)) drop-shadow(0 0 40px hsl(280 60% 45% / 0.3))`,
+              }}
             >
               {letter}
             </motion.span>
@@ -111,7 +127,16 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-4 md:mb-6"
         >
-          <span className="font-display text-2xl sm:text-4xl md:text-6xl font-bold text-primary/90 text-glow-red tracking-[0.2em] md:tracking-[0.4em]">
+          <span
+            className="font-display text-2xl sm:text-4xl md:text-6xl font-bold tracking-[0.2em] md:tracking-[0.4em]"
+            style={{
+              background: `linear-gradient(90deg, hsl(280 60% 55%), hsl(48 95% 55%))`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              filter: `drop-shadow(0 0 8px hsl(280 60% 45% / 0.4))`,
+            }}
+          >
             2K26
           </span>
         </motion.div>
@@ -152,20 +177,24 @@ const HeroSection = () => {
         >
           <a
             href="#events"
-            className="group relative inline-flex items-center gap-3 border border-primary/30 px-7 md:px-10 py-3 md:py-4 font-body text-primary/90 tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs hover:border-primary/60 transition-all duration-500 overflow-hidden"
+            className="group relative inline-flex items-center gap-3 border border-accent/40 px-7 md:px-10 py-3 md:py-4 font-body text-accent tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs hover:border-accent/70 transition-all duration-500 overflow-hidden"
           >
             <span className="relative z-10">Explore Events</span>
-            <span className="relative z-10 text-primary/50 group-hover:translate-x-1 transition-transform duration-300">↓</span>
-            <div className="absolute inset-0 bg-primary/5 group-hover:bg-primary/10 transition-colors duration-500" />
+            <span className="relative z-10 text-accent/50 group-hover:translate-x-1 transition-transform duration-300">↓</span>
+            <div className="absolute inset-0 bg-accent/5 group-hover:bg-accent/15 transition-colors duration-500" />
           </a>
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfSpTsRhZDTRFCRvkTSksLzRy-Kg0-68jwW3PStLwkNfrXeng/viewform"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 bg-primary/90 hover:bg-primary px-7 md:px-10 py-3 md:py-4 font-body text-primary-foreground tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs transition-all duration-500 overflow-hidden"
+            className="group relative inline-flex items-center gap-3 px-7 md:px-10 py-3 md:py-4 font-body text-primary-foreground tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs transition-all duration-500 overflow-hidden"
+            style={{
+              background: `linear-gradient(135deg, hsl(48 95% 50%), hsl(38 100% 45%))`,
+            }}
           >
-            <span className="relative z-10">Register Now</span>
+            <span className="relative z-10 font-semibold">Register Now</span>
             <span className="relative z-10 opacity-70 group-hover:translate-x-1 transition-transform duration-300">→</span>
+            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500" />
           </a>
         </motion.div>
       </div>

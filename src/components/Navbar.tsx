@@ -27,7 +27,7 @@ const Navbar = () => {
         transition={{ duration: 1, delay: 2 }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ${
           scrolled
-            ? "bg-background/80 backdrop-blur-md border-b border-border/50"
+            ? "bg-background/85 backdrop-blur-xl border-b border-border/40"
             : "bg-transparent"
         }`}
       >
@@ -37,14 +37,15 @@ const Navbar = () => {
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="font-body text-sm tracking-[0.25em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300"
+                className="font-body text-sm tracking-[0.25em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-full h-px bg-primary/0 group-hover:bg-primary/60 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left" />
               </a>
             ))}
           </div>
@@ -52,7 +53,7 @@ const Navbar = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-foreground/70 hover:text-primary transition-colors p-1"
+            className="md:hidden text-foreground/60 hover:text-primary transition-colors p-1"
             aria-label="Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -68,11 +69,11 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-lg flex flex-col items-center justify-center gap-10 md:hidden"
+            className="fixed inset-0 z-50 bg-background/97 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 md:hidden"
           >
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-5 text-foreground/70 hover:text-primary transition-colors p-1"
+              className="absolute top-4 right-5 text-foreground/60 hover:text-primary transition-colors p-1"
               aria-label="Close menu"
             >
               <X size={22} />
@@ -87,7 +88,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3, delay: i * 0.08 }}
-                className="font-cinzel text-2xl tracking-[0.3em] uppercase text-foreground/80 hover:text-primary transition-colors duration-300"
+                className="font-cinzel text-2xl tracking-[0.3em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300"
               >
                 {item.label}
               </motion.a>
