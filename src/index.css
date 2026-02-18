@@ -190,7 +190,7 @@
   }
 }
 
-/* Flicker animation — more organic, less predictable */
+/* Flicker animation */
 @keyframes flicker {
   0% { opacity: 1; }
   3% { opacity: 0.87; }
@@ -241,41 +241,43 @@
   96% { transform: translateX(0); }
 }
 
-.animate-flicker {
-  animation: flicker 6s infinite;
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
 }
 
-.animate-float-up {
-  animation: float-up linear infinite;
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px hsl(48 95% 55% / 0.1), 0 0 30px hsl(280 60% 45% / 0.05);
+  }
+  50% {
+    box-shadow: 0 0 25px hsl(48 95% 55% / 0.2), 0 0 50px hsl(280 60% 45% / 0.1);
+  }
 }
 
-.animate-drift {
-  animation: drift ease-in-out infinite;
-}
+.animate-flicker { animation: flicker 6s infinite; }
+.animate-float-up { animation: float-up linear infinite; }
+.animate-drift { animation: drift ease-in-out infinite; }
+.animate-ember-glow { animation: ember-glow ease-in-out infinite; }
+.animate-vhs-glitch { animation: vhs-glitch 8s infinite; }
+.animate-breathe { animation: breathe 5s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
 
-.animate-ember-glow {
-  animation: ember-glow ease-in-out infinite;
-}
-
-.animate-vhs-glitch {
-  animation: vhs-glitch 8s infinite;
-}
-
-/* Smooth scroll */
+/* Premium smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: hsl(270 30% 4%);
-}
+/* Ultra-refined scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: hsl(270 30% 4%); }
 ::-webkit-scrollbar-thumb {
-  background: hsl(280 60% 45% / 0.3);
+  background: linear-gradient(to bottom, hsl(48 95% 55% / 0.2), hsl(280 60% 45% / 0.3));
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(48 95% 55% / 0.5);
+  background: linear-gradient(to bottom, hsl(48 95% 55% / 0.5), hsl(280 60% 45% / 0.5));
 }
+
+/* Smooth global transitions */
+* { -webkit-tap-highlight-color: transparent; }
