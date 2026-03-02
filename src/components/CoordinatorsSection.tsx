@@ -164,7 +164,7 @@ const CoordinatorsSection = () => {
   const glowOpacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <section ref={sectionRef} id="coordinators" className="relative py-36 md:py-52 px-5 md:px-4 overflow-hidden">
+    <section ref={sectionRef} id="coordinators" className="relative py-24 md:py-36 px-5 md:px-8 overflow-hidden">
       {/* Ambient glows */}
       <motion.div
         className="absolute top-1/4 left-0 w-[500px] h-[700px] -translate-y-1/2 rounded-full blur-[220px] pointer-events-none"
@@ -190,7 +190,7 @@ const CoordinatorsSection = () => {
           whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20 md:mb-28"
+          className="mb-14 md:mb-20"
         >
           <p className="font-body text-xs md:text-sm tracking-[0.5em] uppercase text-accent/60 mb-3 md:mb-4">
             The pillars
@@ -214,7 +214,7 @@ const CoordinatorsSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
         >
           {categories.map((cat) => {
             const isAccent = cat.color === "accent";
@@ -240,7 +240,7 @@ const CoordinatorsSection = () => {
 
                 {/* Card body */}
                 <div
-                  className={`relative card-stranger p-7 md:p-9 overflow-hidden transition-shadow duration-[900ms] ${
+                  className={`relative card-stranger p-6 md:p-7 pb-10 md:pb-12 overflow-hidden transition-shadow duration-[900ms] ${
                     isAccent
                       ? "hover:shadow-[0_12px_50px_-12px_hsl(280_60%_45%/0.25)]"
                       : "hover:shadow-[0_12px_50px_-12px_hsl(48_95%_55%/0.15)]"
@@ -268,7 +268,7 @@ const CoordinatorsSection = () => {
                   </div>
 
                   {/* Category header */}
-                  <div className="flex items-center gap-3 mb-6">
+                  <div className="flex items-center gap-3 mb-4">
                     <div
                       className={`flex items-center justify-center w-8 h-8 rounded-sm border transition-all duration-[700ms] ${
                         isAccent
@@ -291,7 +291,7 @@ const CoordinatorsSection = () => {
 
                   {/* Divider */}
                   <div
-                    className={`h-[1px] mb-5 transition-all duration-[800ms] ${
+                    className={`h-[1px] mb-4 transition-all duration-[800ms] ${
                       isAccent
                         ? "w-10 bg-accent/15 group-hover:w-full group-hover:bg-accent/25"
                         : "w-10 bg-primary/15 group-hover:w-full group-hover:bg-primary/25"
@@ -303,7 +303,7 @@ const CoordinatorsSection = () => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="space-y-2.5"
+                    className="space-y-2"
                   >
                     {cat.members.map((name, i) => (
                       <motion.li
