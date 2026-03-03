@@ -192,10 +192,10 @@ const CoordinatorsSection = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14 md:mb-20"
         >
-          <p className="font-body text-xs md:text-sm tracking-[0.5em] uppercase text-accent/60 mb-3 md:mb-4">
+          <p className="font-montserrat text-xs md:text-sm tracking-[0.5em] uppercase text-accent/60 mb-3 md:mb-4 font-medium">
             The pillars
           </p>
-          <h2 className="font-display text-5xl md:text-8xl text-primary text-glow-red leading-[0.9]">
+          <h2 className="font-display text-5xl md:text-8xl text-primary text-glow-red leading-[0.9] font-black">
             Faculty
           </h2>
           <motion.div
@@ -279,7 +279,7 @@ const CoordinatorsSection = () => {
                       {cat.icon}
                     </div>
                     <h3
-                      className={`font-cinzel text-sm md:text-base tracking-wide transition-colors duration-[700ms] ${
+                      className={`font-cinzel text-sm md:text-base tracking-wide transition-colors duration-[700ms] font-semibold ${
                         isAccent
                           ? "text-accent/70 group-hover:text-accent"
                           : "text-primary/70 group-hover:text-primary"
@@ -319,7 +319,7 @@ const CoordinatorsSection = () => {
                               : "bg-primary/30 group-hover:bg-primary/60"
                           }`}
                         />
-                        <span className="font-body text-sm md:text-[15px] text-foreground/75 group-hover:text-foreground/90 transition-colors duration-500 leading-relaxed">
+                        <span className="font-body text-sm md:text-[15px] text-foreground/75 group-hover:text-foreground/90 transition-colors duration-500 leading-relaxed tracking-wide">
                           {name}
                         </span>
                       </motion.li>
@@ -328,7 +328,7 @@ const CoordinatorsSection = () => {
 
                   {/* Member count badge */}
                   <div
-                    className={`absolute bottom-4 right-5 font-body text-[10px] tracking-[0.3em] uppercase transition-all duration-[700ms] ${
+                    className={`absolute bottom-4 right-5 font-montserrat text-[10px] tracking-[0.3em] uppercase transition-all duration-[700ms] font-medium ${
                       isAccent
                         ? "text-accent/20 group-hover:text-accent/40"
                         : "text-primary/20 group-hover:text-primary/40"

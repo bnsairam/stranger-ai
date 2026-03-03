@@ -16,8 +16,10 @@ export default {
       fontFamily: {
         display: ['"Cinzel Decorative"', 'Cinzel', 'serif'],
         cinzel: ['Cinzel', 'serif'],
-        body: ['Rajdhani', 'sans-serif'],
+        body: ['"DM Sans"', 'Rajdhani', 'sans-serif'],
         elegant: ['"Cormorant Garamond"', 'serif'],
+        playfair: ['"Playfair Display"', 'serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

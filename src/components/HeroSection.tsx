@@ -61,7 +61,7 @@ const HeroSection = () => {
           src={heroBg}
           alt=""
           className="w-full h-full object-cover"
-          style={{ filter: "saturate(0.45) brightness(0.3) hue-rotate(240deg)" }}
+          style={{ filter: "saturate(0.5) brightness(0.35) hue-rotate(240deg)" }}
         />
       </motion.div>
 
@@ -72,11 +72,9 @@ const HeroSection = () => {
           linear-gradient(to bottom, hsl(270 30% 4% / 0.55) 0%, transparent 25%, transparent 50%, hsl(270 30% 4%) 100%)
         `
       }} />
-      {/* Golden crown light from top center */}
       <div className="absolute inset-0 animate-breathe" style={{
         background: `radial-gradient(ellipse 50% 35% at 50% 0%, hsl(48 95% 55% / 0.08) 0%, transparent 100%)`
       }} />
-      {/* Purple nebula from corners */}
       <div className="absolute inset-0" style={{
         background: `
           radial-gradient(ellipse 45% 55% at 0% 100%, hsl(280 60% 45% / 0.1) 0%, transparent 65%),
@@ -85,7 +83,7 @@ const HeroSection = () => {
         `
       }} />
 
-      {/* Content with parallax fade + blur */}
+      {/* Content */}
       <motion.div
         className="relative z-20 text-center px-5 max-w-6xl mx-auto"
         style={{
@@ -100,7 +98,7 @@ const HeroSection = () => {
           transition={{ duration: 1.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="mb-2 md:mb-3"
         >
-          <p className="font-elegant italic text-foreground/70 text-sm md:text-lg tracking-[0.12em] md:tracking-[0.18em]">
+          <p className="font-playfair italic text-foreground/70 text-sm md:text-xl tracking-[0.12em] md:tracking-[0.18em]">
             Jeppiaar Educity presents
           </p>
         </motion.div>
@@ -111,12 +109,12 @@ const HeroSection = () => {
           transition={{ duration: 1.4, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-5 md:mb-7"
         >
-          <p className="font-body text-accent/65 text-xs md:text-sm tracking-[0.35em] md:tracking-[0.55em] uppercase font-medium leading-relaxed">
+          <p className="font-montserrat text-accent/65 text-xs md:text-sm tracking-[0.35em] md:tracking-[0.55em] uppercase font-medium leading-relaxed">
             Inter College Culturals
           </p>
         </motion.div>
 
-        {/* PRATIYOG — shimmer gradient text */}
+        {/* PRATIYOG */}
         <div className="flex items-center justify-center gap-0.5 sm:gap-1 md:gap-3 mb-2">
           {titleLetters.map((letter, i) => (
             <motion.span
@@ -128,7 +126,7 @@ const HeroSection = () => {
                 delay: 0.9 + i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-bold inline-block leading-none animate-flicker"
+              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-black inline-block leading-none animate-flicker"
               style={{
                 animationDelay: `${i * 0.8}s`,
                 background: `linear-gradient(135deg, hsl(48 100% 65%) 0%, hsl(45 100% 55%) 30%, hsl(40 100% 48%) 50%, hsl(310 50% 55%) 75%, hsl(280 60% 55%) 100%)`,
@@ -151,7 +149,7 @@ const HeroSection = () => {
           className="mb-5 md:mb-7"
         >
           <span
-            className="font-display text-2xl sm:text-4xl md:text-6xl font-bold tracking-[0.25em] md:tracking-[0.45em]"
+            className="font-display text-2xl sm:text-4xl md:text-6xl font-black tracking-[0.25em] md:tracking-[0.45em]"
             style={{
               background: `linear-gradient(90deg, hsl(280 60% 55%), hsl(300 50% 55%), hsl(48 95% 55%))`,
               WebkitBackgroundClip: 'text',
@@ -176,7 +174,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 1.2, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-cinzel text-base sm:text-lg md:text-2xl text-foreground/80 tracking-[0.18em] md:tracking-[0.3em] font-normal">
+          <h2 className="font-cinzel text-base sm:text-lg md:text-2xl text-foreground/80 tracking-[0.18em] md:tracking-[0.3em] font-semibold">
             A National Level Cultural Fest
           </h2>
         </motion.div>
@@ -187,7 +185,7 @@ const HeroSection = () => {
           transition={{ duration: 1.5, delay: 2.8 }}
           className="mt-3 md:mt-5"
         >
-          <p className="font-body text-foreground/45 text-xs md:text-sm tracking-[0.25em] uppercase">
+          <p className="font-montserrat text-foreground/45 text-xs md:text-sm tracking-[0.25em] uppercase font-light">
             Jeppiaar Engineering College, Chennai
           </p>
         </motion.div>
@@ -200,7 +198,7 @@ const HeroSection = () => {
         >
           <a
             href="#events"
-            className="group relative inline-flex items-center gap-3 border border-accent/25 px-9 md:px-12 py-4 md:py-5 font-body text-accent tracking-[0.35em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs hover:border-accent/50 transition-all duration-700 overflow-hidden"
+            className="group relative inline-flex items-center gap-3 border border-accent/25 px-9 md:px-12 py-4 md:py-5 font-montserrat text-accent tracking-[0.35em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs font-medium hover:border-accent/50 transition-all duration-700 overflow-hidden"
           >
             <span className="relative z-10">Explore Events</span>
             <motion.span
@@ -221,12 +219,12 @@ const HeroSection = () => {
             href="https://docs.google.com/forms/d/e/1FAIpQLSfSpTsRhZDTRFCRvkTSksLzRy-Kg0-68jwW3PStLwkNfrXeng/viewform"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 px-9 md:px-12 py-4 md:py-5 font-body text-primary-foreground tracking-[0.35em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs transition-all duration-700 overflow-hidden animate-pulse-glow"
+            className="group relative inline-flex items-center gap-3 px-9 md:px-12 py-4 md:py-5 font-montserrat text-primary-foreground tracking-[0.35em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs font-bold transition-all duration-700 overflow-hidden animate-pulse-glow"
             style={{
               background: `linear-gradient(135deg, hsl(48 95% 52%), hsl(42 100% 48%), hsl(38 100% 44%))`,
             }}
           >
-            <span className="relative z-10 font-semibold">Register Now</span>
+            <span className="relative z-10">Register Now</span>
             <motion.span
               className="relative z-10 opacity-50"
               animate={{ x: [0, 4, 0] }}
@@ -239,7 +237,6 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Bottom fade — taller for seamless section merge */}
       <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
     </section>
   );

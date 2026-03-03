@@ -38,10 +38,10 @@ const ContactSection = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-16 md:mb-24"
         >
-          <p className="font-body text-xs md:text-sm tracking-[0.5em] uppercase text-accent/60 mb-3 md:mb-4">
+          <p className="font-montserrat text-xs md:text-sm tracking-[0.5em] uppercase text-accent/60 mb-3 md:mb-4 font-medium">
             Locate the gate
           </p>
-          <h2 className="font-display text-5xl md:text-7xl text-primary text-glow-red leading-[0.9]">
+          <h2 className="font-display text-5xl md:text-7xl text-primary text-glow-red leading-[0.9] font-black">
             Find Us
           </h2>
           <motion.div
@@ -62,7 +62,7 @@ const ContactSection = () => {
         >
           <div className="flex items-start justify-center gap-4">
             <MapPin size={18} className="text-accent/45 mt-1.5 shrink-0" />
-            <p className="font-elegant text-lg md:text-2xl text-foreground/70 leading-relaxed">
+            <p className="font-playfair text-lg md:text-2xl text-foreground/70 leading-relaxed italic">
               Rajiv Gandhi Salai, Old Mamallapuram Road,<br />
               Semmancheri, Chennai
             </p>
@@ -73,7 +73,7 @@ const ContactSection = () => {
             className="inline-flex items-center gap-3 text-muted-foreground/60 hover:text-primary transition-all duration-[600ms] group"
           >
             <PhoneIcon size={15} className="text-accent/35 group-hover:text-primary group-hover:scale-110 transition-all duration-[600ms]" />
-            <span className="font-body text-base md:text-lg tracking-wider group-hover:tracking-[0.18em] transition-all duration-[600ms]">
+            <span className="font-montserrat text-base md:text-lg tracking-wider group-hover:tracking-[0.18em] transition-all duration-[600ms] font-light">
               044 2450 2818
             </span>
           </a>
@@ -96,10 +96,10 @@ const ContactSection = () => {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         />
 
-        <p className="font-display text-xs md:text-sm text-muted-foreground/45 tracking-[0.35em]">
+        <p className="font-display text-xs md:text-sm text-muted-foreground/45 tracking-[0.35em] font-bold">
           JEPPIAAR ENGINEERING COLLEGE
         </p>
-        <p className="font-body text-[10px] md:text-xs text-muted-foreground/20 mt-3 tracking-[0.45em] uppercase">
+        <p className="font-montserrat text-[10px] md:text-xs text-muted-foreground/20 mt-3 tracking-[0.45em] uppercase font-light">
           AI & ML · XENZO · Pratiyog'26
         </p>
 
