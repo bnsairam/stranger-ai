@@ -1,21 +1,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
-import logo25 from "@/assets/logos/25-years.png";
-import logoJprEducity from "@/assets/logos/jpr-educity.jpeg";
 import logoJec from "@/assets/logos/jec.png";
 import logoIet from "@/assets/logos/iet.png";
-import logoAiml from "@/assets/logos/aiml.png";
 
 const titleLetters = "PRATIYOG".split("");
-
-const logos = [
-  { src: logoJprEducity, alt: "Jeppiaar Educity", className: "h-12 md:h-16" },
-  { src: logoJec, alt: "Jeppiaar Engineering College", className: "h-11 md:h-14" },
-  { src: logo25, alt: "25 Years of Legacy", className: "h-14 md:h-20" },
-  { src: logoAiml, alt: "AI & ML Department", className: "h-12 md:h-16" },
-  { src: logoIet, alt: "IET", className: "h-10 md:h-13" },
-];
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,34 +18,13 @@ const HeroSection = () => {
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.1, 1.3]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.4], [0, -80]);
-  const contentBlur = useTransform(scrollYProgress, [0, 0.4], [0, 12]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Logos at top */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 2.5 }}
-        className="absolute top-16 md:top-20 left-0 right-0 z-30 px-4"
-        style={{ opacity: contentOpacity }}
-      >
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
-          {logos.map((logo, i) => (
-            <motion.img
-              key={logo.alt}
-              src={logo.src}
-              alt={logo.alt}
-              initial={{ opacity: 0, y: -20, filter: "blur(6px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.9, delay: 2.7 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className={`${logo.className} w-auto object-contain opacity-65 hover:opacity-100 transition-all duration-700 hover:scale-105`}
-            />
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Parallax layered background */}
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
+    >
+      {/* ── Parallax Background ── */}
       <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
         <img
           src={heroBg}
@@ -65,96 +34,146 @@ const HeroSection = () => {
         />
       </motion.div>
 
-      {/* Vignette overlays */}
-      <div className="absolute inset-0" style={{
-        background: `
-          radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, hsl(270 30% 4% / 0.65) 55%, hsl(270 30% 4% / 0.98) 100%),
-          linear-gradient(to bottom, hsl(270 30% 4% / 0.55) 0%, transparent 25%, transparent 50%, hsl(270 30% 4%) 100%)
-        `
-      }} />
-      <div className="absolute inset-0 animate-breathe" style={{
-        background: `radial-gradient(ellipse 50% 35% at 50% 0%, hsl(48 95% 55% / 0.08) 0%, transparent 100%)`
-      }} />
-      <div className="absolute inset-0" style={{
-        background: `
-          radial-gradient(ellipse 45% 55% at 0% 100%, hsl(280 60% 45% / 0.1) 0%, transparent 65%),
-          radial-gradient(ellipse 45% 55% at 100% 100%, hsl(280 60% 45% / 0.1) 0%, transparent 65%),
-          radial-gradient(ellipse 30% 40% at 50% 80%, hsl(280 80% 30% / 0.06) 0%, transparent 100%)
-        `
-      }} />
-
-      {/* Content */}
-      <motion.div
-        className="relative z-20 text-center px-5 max-w-6xl mx-auto"
+      {/* ── Vignette + Ambient Layers ── */}
+      <div
+        className="absolute inset-0"
         style={{
-          opacity: contentOpacity,
-          y: contentY,
-          filter: contentBlur.get() > 0 ? `blur(${contentBlur.get()}px)` : undefined,
+          background: `
+            radial-gradient(ellipse 80% 70% at 50% 40%, transparent 0%, hsl(270 30% 4% / 0.65) 55%, hsl(270 30% 4% / 0.98) 100%),
+            linear-gradient(to bottom, hsl(270 30% 4% / 0.55) 0%, transparent 25%, transparent 50%, hsl(270 30% 4%) 100%)
+          `,
         }}
+      />
+      <div
+        className="absolute inset-0 animate-breathe"
+        style={{
+          background: `radial-gradient(ellipse 50% 35% at 50% 0%, hsl(48 95% 55% / 0.08) 0%, transparent 100%)`,
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(ellipse 45% 55% at 0% 100%, hsl(280 60% 45% / 0.1) 0%, transparent 65%),
+            radial-gradient(ellipse 45% 55% at 100% 100%, hsl(280 60% 45% / 0.1) 0%, transparent 65%)
+          `,
+        }}
+      />
+
+      {/* ═══════════════════════════════════════════
+          ROW 1 — JEC logo (left) · IET logo (right)
+         ═══════════════════════════════════════════ */}
+      <motion.div
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 2.4, ease }}
+        className="absolute top-0 left-0 right-0 z-30 px-10 md:px-16 pt-6 md:pt-8"
+        style={{ opacity: contentOpacity }}
       >
-        <motion.div
+        <div className="flex items-center justify-between max-w-5xl mx-auto">
+          <img
+            src={logoJec}
+            alt="Jeppiaar Engineering College"
+            className="h-[40px] md:h-[45px] w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-500"
+            style={{ filter: "grayscale(0.3) sepia(0.15) hue-rotate(15deg)" }}
+          />
+          <img
+            src={logoIet}
+            alt="IET"
+            className="h-[40px] md:h-[45px] w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-500"
+            style={{ filter: "grayscale(0.3) sepia(0.15) hue-rotate(15deg)" }}
+          />
+        </div>
+      </motion.div>
+
+      {/* ═══════════════════════════════════════════
+          MAIN CONTENT — strict vertical rhythm
+         ═══════════════════════════════════════════ */}
+      <motion.div
+        className="relative z-20 text-center px-5 max-w-6xl mx-auto flex flex-col items-center"
+        style={{ opacity: contentOpacity, y: contentY }}
+      >
+        {/* ROW 2 — "Jeppiaar Educity Presents" */}
+        <motion.p
           initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-2 md:mb-3"
+          transition={{ duration: 1.8, delay: 0.3, ease }}
+          className="font-playfair italic text-sm md:text-lg tracking-[0.16em] md:tracking-[0.25em] font-medium"
+          style={{
+            background: `linear-gradient(90deg, hsl(48 80% 65%), hsl(48 95% 55%), hsl(48 80% 65%))`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            textShadow: "none",
+            filter: "drop-shadow(0 0 12px hsl(48 95% 55% / 0.25))",
+          }}
         >
-          <p className="font-playfair italic text-foreground/70 text-sm md:text-xl tracking-[0.12em] md:tracking-[0.18em]">
-            Jeppiaar Educity presents
-          </p>
-        </motion.div>
+          Jeppiaar Educity Presents
+        </motion.p>
 
+        {/* 30px gap */}
+        <div className="h-[20px] md:h-[30px]" />
+
+        {/* ── Shadow/Atmospheric Title ── */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden>
+          <span
+            className="font-display text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-black tracking-wide"
+            style={{
+              opacity: 0.06,
+              filter: "blur(7px)",
+              transform: "scale(1.12)",
+              background: `linear-gradient(135deg, hsl(48 100% 55%), hsl(280 60% 50%))`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            PRATIYOG
+          </span>
+        </div>
+
+        {/* ── PRATIYOG — main title ── */}
         <motion.div
-          initial={{ opacity: 0, y: 8, filter: "blur(4px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.4, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-5 md:mb-7"
+          className="flex items-center justify-center gap-0.5 sm:gap-1 md:gap-2"
+          animate={{ scale: [1, 1.02, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         >
-          <p className="font-montserrat text-accent/65 text-xs md:text-sm tracking-[0.35em] md:tracking-[0.55em] uppercase font-medium leading-relaxed">
-            Inter College Culturals
-          </p>
-        </motion.div>
-
-        {/* PRATIYOG */}
-        <div className="flex items-center justify-center gap-0.5 sm:gap-1 md:gap-3 mb-2">
           {titleLetters.map((letter, i) => (
             <motion.span
               key={i}
               initial={{ opacity: 0, y: 70, rotateX: -90, filter: "blur(12px)" }}
               animate={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }}
-              transition={{
-                duration: 1.2,
-                delay: 0.9 + i * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-black inline-block leading-none animate-flicker"
+              transition={{ duration: 1.2, delay: 0.9 + i * 0.1, ease }}
+              className="font-display text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-black inline-block leading-none"
               style={{
-                animationDelay: `${i * 0.8}s`,
-                background: `linear-gradient(135deg, hsl(48 100% 65%) 0%, hsl(45 100% 55%) 30%, hsl(40 100% 48%) 50%, hsl(310 50% 55%) 75%, hsl(280 60% 55%) 100%)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                filter: `drop-shadow(0 0 15px hsl(48 100% 55% / 0.6)) drop-shadow(0 0 50px hsl(280 60% 45% / 0.35))`,
+                background: `linear-gradient(150deg, hsl(48 100% 68%) 0%, hsl(45 100% 55%) 35%, hsl(40 100% 48%) 55%, hsl(310 45% 50%) 80%, hsl(280 55% 50%) 100%)`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: `drop-shadow(0 4px 8px hsl(0 0% 0% / 0.4)) drop-shadow(0 0 20px hsl(48 100% 55% / 0.5)) drop-shadow(0 0 60px hsl(280 60% 45% / 0.3))`,
               }}
             >
               {letter}
             </motion.span>
           ))}
-        </div>
+        </motion.div>
 
-        {/* 2K26 */}
+        {/* 10px gap → 2K26 */}
+        <div className="h-[6px] md:h-[10px]" />
+
+        {/* ── 2K26 — closer, smaller, purple-dominant ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.7, filter: "blur(10px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-5 md:mb-7"
+          transition={{ duration: 1.2, delay: 1.8, ease }}
         >
           <span
-            className="font-display text-2xl sm:text-4xl md:text-6xl font-black tracking-[0.25em] md:tracking-[0.45em]"
+            className="font-display text-xl sm:text-3xl md:text-5xl font-black tracking-[0.25em] md:tracking-[0.4em]"
             style={{
-              background: `linear-gradient(90deg, hsl(280 60% 55%), hsl(300 50% 55%), hsl(48 95% 55%))`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              background: `linear-gradient(90deg, hsl(280 55% 55%), hsl(300 45% 58%), hsl(48 80% 60%))`,
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
               filter: `drop-shadow(0 0 10px hsl(280 60% 45% / 0.5))`,
             }}
           >
@@ -162,66 +181,97 @@ const HeroSection = () => {
           </span>
         </motion.div>
 
+        {/* 30px gap → divider */}
+        <div className="h-[20px] md:h-[30px]" />
+
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.6, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
-          className="divider-ember w-36 sm:w-52 md:w-80 mx-auto mb-6 md:mb-7"
+          transition={{ duration: 1.6, delay: 2.1, ease }}
+          className="divider-ember w-36 sm:w-52 md:w-80"
         />
+
+        {/* 30px gap → tagline */}
+        <div className="h-[20px] md:h-[30px]" />
 
         <motion.div
           initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 2.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, delay: 2.4, ease }}
         >
-          <h2 className="font-cinzel text-base sm:text-lg md:text-2xl text-foreground/80 tracking-[0.18em] md:tracking-[0.3em] font-semibold">
+          <h2
+            className="font-cinzel text-sm sm:text-base md:text-xl uppercase tracking-[0.2em] md:tracking-[0.32em] font-semibold"
+            style={{
+              color: "hsl(0 0% 85%)",
+              textShadow: "0 0 20px hsl(0 0% 100% / 0.1)",
+            }}
+          >
             A National Level Cultural Fest
           </h2>
         </motion.div>
+
+        {/* 10px gap → location */}
+        <div className="h-[8px] md:h-[10px]" />
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 2.8 }}
-          className="mt-3 md:mt-5"
         >
-          <p className="font-montserrat text-foreground/45 text-xs md:text-sm tracking-[0.25em] uppercase font-light">
+          <p className="font-montserrat text-foreground/45 text-[10px] md:text-xs tracking-[0.25em] uppercase font-light">
             Jeppiaar Engineering College, Chennai
           </p>
         </motion.div>
 
+        {/* 50px gap → buttons */}
+        <div className="h-[36px] md:h-[50px]" />
+
+        {/* ── Buttons ── */}
         <motion.div
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 3.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-14 md:mt-18 flex flex-col sm:flex-row items-center justify-center gap-5"
+          transition={{ duration: 1.2, delay: 3.1, ease }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 md:gap-6 w-full sm:w-auto"
         >
+          {/* Explore Events — Glassmorphism */}
           <a
             href="#events"
-            className="group relative inline-flex items-center gap-3 border border-accent/25 px-9 md:px-12 py-4 md:py-5 font-montserrat text-accent tracking-[0.35em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs font-medium hover:border-accent/50 transition-all duration-700 overflow-hidden"
+            className="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-9 md:px-12 py-4 md:py-5 rounded-lg font-montserrat tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs font-medium transition-all duration-500 hover:-translate-y-1"
+            style={{
+              background: "hsl(270 20% 12% / 0.4)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid hsl(48 95% 55% / 0.2)",
+              color: "hsl(48 80% 65%)",
+              boxShadow: "0 4px 20px hsl(0 0% 0% / 0.3)",
+            }}
           >
             <span className="relative z-10">Explore Events</span>
             <motion.span
-              className="relative z-10 text-accent/35"
+              className="relative z-10 opacity-40"
               animate={{ y: [0, 3, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               ↓
             </motion.span>
-            <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/8 transition-colors duration-700" />
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+            <div
+              className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-500"
               style={{
-                background: `radial-gradient(ellipse at center, hsl(280 60% 45% / 0.08), transparent 70%)`
+                border: "1px solid hsl(48 95% 55% / 0.45)",
+                boxShadow:
+                  "0 8px 32px hsl(48 95% 55% / 0.12), 0 0 60px hsl(280 60% 45% / 0.08), inset 0 0 20px hsl(48 95% 55% / 0.04)",
               }}
             />
           </a>
+
+          {/* Register Now — Gold Gradient + Shimmer */}
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfSpTsRhZDTRFCRvkTSksLzRy-Kg0-68jwW3PStLwkNfrXeng/viewform"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 px-9 md:px-12 py-4 md:py-5 font-montserrat text-primary-foreground tracking-[0.35em] md:tracking-[0.45em] uppercase text-[10px] md:text-xs font-bold transition-all duration-700 overflow-hidden animate-pulse-glow"
+            className="group relative inline-flex items-center justify-center gap-3 w-full sm:w-auto px-9 md:px-12 py-4 md:py-5 rounded-lg font-montserrat text-primary-foreground tracking-[0.3em] md:tracking-[0.4em] uppercase text-[10px] md:text-xs font-bold transition-all duration-500 overflow-hidden hover:scale-105 animate-pulse-glow"
             style={{
-              background: `linear-gradient(135deg, hsl(48 95% 52%), hsl(42 100% 48%), hsl(38 100% 44%))`,
+              background: `linear-gradient(135deg, hsl(48 95% 55%), hsl(42 100% 48%), hsl(38 100% 44%))`,
             }}
           >
             <span className="relative z-10">Register Now</span>
@@ -232,11 +282,20 @@ const HeroSection = () => {
             >
               →
             </motion.span>
-            <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/15 transition-colors duration-700" />
+            {/* Shimmer sweep */}
+            <div
+              className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.2), transparent)",
+              }}
+            />
+            <div className="absolute inset-0 rounded-lg bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500" />
           </a>
         </motion.div>
       </motion.div>
 
+      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
     </section>
   );
