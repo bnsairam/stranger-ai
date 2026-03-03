@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 260 25% 4%;
+    --background: 265 30% 4%;
     --foreground: 50 20% 92%;
 
-    --card: 260 18% 7%;
+    --card: 265 22% 7%;
     --card-foreground: 50 20% 92%;
 
-    --popover: 260 18% 7%;
+    --popover: 265 22% 7%;
     --popover-foreground: 50 20% 92%;
 
     --primary: 48 95% 55%;
-    --primary-foreground: 260 40% 8%;
+    --primary-foreground: 265 40% 8%;
 
-    --secondary: 260 12% 12%;
+    --secondary: 270 15% 12%;
     --secondary-foreground: 50 20% 92%;
 
-    --muted: 260 10% 14%;
-    --muted-foreground: 260 8% 48%;
+    --muted: 270 12% 14%;
+    --muted-foreground: 270 8% 48%;
 
     --accent: 275 70% 50%;
     --accent-foreground: 50 40% 95%;
@@ -30,29 +30,27 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 260 12% 14%;
-    --input: 260 12% 14%;
+    --border: 270 14% 14%;
+    --input: 270 14% 14%;
     --ring: 48 95% 55%;
 
     --radius: 0.5rem;
 
-    /* Neon glow tokens */
+    /* Neon glow tokens — ONLY yellow & purple */
     --neon-gold: 48 100% 55%;
     --neon-purple: 275 85% 55%;
-    --neon-blue: 220 90% 60%;
-    --neon-cyan: 185 80% 55%;
 
     --glow-gold: 0 0 20px hsl(48 100% 55% / 0.4), 0 0 60px hsl(48 100% 55% / 0.15);
     --glow-purple: 0 0 20px hsl(275 85% 55% / 0.4), 0 0 60px hsl(275 85% 55% / 0.15);
     --glow-soft: 0 0 30px hsl(48 100% 55% / 0.08), 0 0 80px hsl(275 85% 55% / 0.05);
 
-    --sidebar-background: 260 20% 6%;
+    --sidebar-background: 265 24% 6%;
     --sidebar-foreground: 50 20% 92%;
     --sidebar-primary: 48 95% 55%;
-    --sidebar-primary-foreground: 260 40% 8%;
-    --sidebar-accent: 260 12% 12%;
+    --sidebar-primary-foreground: 265 40% 8%;
+    --sidebar-accent: 270 15% 12%;
     --sidebar-accent-foreground: 50 20% 92%;
-    --sidebar-border: 260 12% 14%;
+    --sidebar-border: 270 14% 14%;
     --sidebar-ring: 48 95% 55%;
   }
 }
@@ -106,7 +104,7 @@
 }
 
 @layer utilities {
-  /* Neon text glows */
+  /* Neon text glows — yellow & purple ONLY */
   .text-glow-gold {
     text-shadow:
       0 0 8px hsl(48 100% 55% / 0.7),
@@ -164,11 +162,11 @@
   .card-stranger {
     background: linear-gradient(
       145deg,
-      hsl(260 18% 8%) 0%,
-      hsl(260 14% 6%) 50%,
-      hsl(270 18% 7%) 100%
+      hsl(270 22% 8%) 0%,
+      hsl(265 18% 6%) 50%,
+      hsl(275 20% 7%) 100%
     );
-    border: 1px solid hsl(260 12% 16%);
+    border: 1px solid hsl(270 14% 16%);
     position: relative;
   }
 
@@ -274,6 +272,46 @@
   50% { border-color: hsl(275 85% 55% / 0.25); }
 }
 
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 8px hsl(48 100% 55% / 0.8),
+      0 0 30px hsl(48 100% 55% / 0.5),
+      0 0 80px hsl(48 95% 55% / 0.3),
+      0 0 150px hsl(275 70% 50% / 0.15);
+  }
+  20%, 24%, 55% {
+    text-shadow:
+      0 0 4px hsl(48 100% 55% / 0.3),
+      0 0 15px hsl(48 100% 55% / 0.15);
+  }
+}
+
+@keyframes beam-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow:
+      0 0 10px hsl(48 100% 55% / 0.6),
+      0 0 40px hsl(48 100% 55% / 0.3),
+      0 0 80px hsl(275 70% 50% / 0.15);
+  }
+  50% {
+    text-shadow:
+      0 0 15px hsl(48 100% 55% / 0.9),
+      0 0 60px hsl(48 100% 55% / 0.5),
+      0 0 120px hsl(275 70% 50% / 0.25);
+  }
+}
+
+@keyframes countdown-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 .animate-float-up { animation: float-up linear infinite; }
 .animate-shimmer { animation: shimmer 3s ease-in-out infinite; }
 .animate-breathe { animation: breathe 6s ease-in-out infinite; }
@@ -286,6 +324,8 @@
   animation: gradient-shift 8s ease infinite; 
 }
 .animate-border-glow { animation: border-glow 4s ease-in-out infinite; }
+.animate-neon-flicker { animation: neon-flicker 3s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 5s ease-in-out infinite; }
 
 /* Section transition line */
 .section-glow-line {
@@ -307,9 +347,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Scrollbar */
+/* Scrollbar — yellow/purple */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: hsl(260 25% 4%); }
+::-webkit-scrollbar-track { background: hsl(265 30% 4%); }
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(to bottom, hsl(48 95% 55% / 0.3), hsl(275 70% 50% / 0.4));
   border-radius: 10px;
