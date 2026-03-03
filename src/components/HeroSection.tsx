@@ -223,6 +223,25 @@ export default function HeroSection() {
             </a>
           </Button>
         </motion.div>
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2.2 }}
+          className="mt-12 sm:mt-16 flex flex-col items-center gap-2"
+        >
+          <span className="font-montserrat text-[8px] sm:text-[9px] tracking-[0.4em] uppercase text-muted-foreground/30">
+            Scroll
+          </span>
+          <div className="w-px h-8 sm:h-10 relative overflow-hidden">
+            <div
+              className="w-full h-full animate-scroll-hint"
+              style={{
+                background: "linear-gradient(to bottom, hsl(48 95% 55% / 0.5), transparent)",
+              }}
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );
