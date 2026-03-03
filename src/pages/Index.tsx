@@ -2,6 +2,7 @@ import FloatingParticles from "@/components/FloatingParticles";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import EventsSection from "@/components/EventsSection";
+import AgendaSection from "@/components/AgendaSection";
 import CoordinatorsSection from "@/components/CoordinatorsSection";
 import ContactSection from "@/components/ContactSection";
 
@@ -16,6 +17,7 @@ const Index = () => {
         <main className="flex-grow">
           <HeroSection />
           <EventsSection />
+          <AgendaSection />
           <CoordinatorsSection />
           <ContactSection />
         </main>

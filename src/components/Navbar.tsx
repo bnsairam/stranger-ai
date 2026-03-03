@@ -5,6 +5,7 @@ import logoJec from "@/assets/logos/jec.png";
 
 const navItems = [
   { label: "Events", href: "#events" },
+  { label: "Agenda", href: "#agenda" },
   { label: "Coordinators", href: "#coordinators" },
   { label: "Contact", href: "#contact" },
 ];
