@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useRef, useEffect, useState } from "react";
+
 import logoJec from "@/assets/logos/jec.png";
 import logoIet from "@/assets/logos/iet.png";
 import logoNaac from "@/assets/logos/naac.png";
@@ -21,6 +22,7 @@ function InteractiveGlow() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
+
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 30 });
   const smoothY = useSpring(mouseY, { stiffness: 50, damping: 30 });
 
@@ -62,16 +64,17 @@ function MagneticLogo({
   src,
   alt,
   delay,
-  size = "h-10 sm:h-12 md:h-14",
+  size,
 }: {
   src: string;
   alt: string;
   delay: number;
-  size?: string;
+  size: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
   const springX = useSpring(x, { stiffness: 150, damping: 15 });
   const springY = useSpring(y, { stiffness: 150, damping: 15 });
 
@@ -96,7 +99,7 @@ function MagneticLogo({
       onMouseMove={handleMouse}
       onMouseLeave={handleLeave}
       style={{ x: springX, y: springY }}
-      className="relative group cursor-pointer"
+      className="relative group cursor-pointer flex items-center justify-center"
     >
       <div
         className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -130,6 +133,7 @@ export default function HeroSection() {
 
   useEffect(() => {
     const target = new Date("2026-03-05T09:00:00+05:30").getTime();
+
     const tick = () => {
       const diff = Math.max(0, target - Date.now());
       setCount({
@@ -139,6 +143,7 @@ export default function HeroSection() {
         secs: Math.floor((diff % 60000) / 1000),
       });
     };
+
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
@@ -148,41 +153,47 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 bg-gradient-to-b from-[#0d0718] via-[#090512] to-[#0a0615]">
       <InteractiveGlow />
 
-      <div className="relative z-10 text-center w-full max-w-5xl mx-auto pt-20 pb-10">
+      <div className="relative z-10 text-center w-full max-w-6xl mx-auto pt-20 pb-10">
 
-        {/* LOGOS ROW */}
+        {/* LOGO ROW */}
         <motion.div
           {...fadeUp(0.3)}
-          className="flex items-center justify-center gap-8 sm:gap-12 md:gap-16 mb-8 flex-wrap"
+          className="flex items-center justify-center gap-10 sm:gap-16 md:gap-24 mb-10 flex-wrap"
         >
           <MagneticLogo
             src={logoFounder}
-            alt="Col. Dr. Jeppiaar - Founder"
+            alt="Founder"
             delay={0.2}
-            size="h-14 sm:h-16 md:h-20"
+            size="h-16 sm:h-20 md:h-24"
           />
 
           <MagneticLogo
             src={logoJec}
             alt="Jeppiaar Engineering College"
             delay={0.35}
+            size="h-12 sm:h-14 md:h-16"
           />
 
-          <MagneticLogo src={logoIet} alt="IET" delay={0.5} />
+          <MagneticLogo
+            src={logoIet}
+            alt="IET"
+            delay={0.5}
+            size="h-12 sm:h-14 md:h-16"
+          />
 
           <MagneticLogo
             src={logoNaac}
             alt="NAAC A Grade"
             delay={0.65}
-            size="h-14 sm:h-16 md:h-20"
+            size="h-16 sm:h-20 md:h-24"
           />
         </motion.div>
 
         {/* TITLE */}
         <motion.h1
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2 }}
+          transition={{ duration: 1.4 }}
           className="text-[4rem] sm:text-[6rem] md:text-[8rem] font-black leading-none tracking-tight bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-400 bg-clip-text text-transparent"
         >
           PRATIYOG
@@ -196,10 +207,7 @@ export default function HeroSection() {
         </motion.p>
 
         {/* COUNTDOWN */}
-        <motion.div
-          {...fadeUp(1.2)}
-          className="mt-10 flex justify-center gap-6"
-        >
+        <motion.div {...fadeUp(1.2)} className="mt-10 flex justify-center gap-8">
           {[
             { label: "Days", value: count.days },
             { label: "Hours", value: count.hours },
@@ -218,13 +226,10 @@ export default function HeroSection() {
         </motion.div>
 
         {/* CTA */}
-        <motion.div
-          {...fadeUp(1.5)}
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center"
-        >
+        <motion.div {...fadeUp(1.5)} className="mt-14 flex flex-col sm:flex-row gap-6 justify-center">
           <Button
             size="lg"
-            className="px-10 py-6 font-semibold tracking-wider bg-gradient-to-r from-yellow-400 to-yellow-500 text-black hover:scale-105 transition"
+            className="px-12 py-6 font-semibold tracking-wider bg-gradient-to-r from-yellow-400 to-yellow-500 text-black hover:scale-105 transition"
             asChild
           >
             <a href="#events">
@@ -237,7 +242,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             variant="outline"
-            className="px-10 py-6 font-semibold tracking-wider border-purple-500 text-purple-300 hover:scale-105 transition"
+            className="px-12 py-6 font-semibold tracking-wider border-purple-500 text-purple-300 hover:scale-105 transition"
             asChild
           >
             <a
