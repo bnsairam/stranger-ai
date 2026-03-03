@@ -2,16 +2,14 @@ import { useMemo } from "react";
 
 const FloatingParticles = () => {
   const embers = useMemo(() => {
-    return Array.from({ length: 50 }, (_, i) => ({
+    return Array.from({ length: 40 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 20,
-      duration: 12 + Math.random() * 22,
-      size: 0.5 + Math.random() * 2.5,
-      glowSize: 3 + Math.random() * 10,
-      hue: Math.random() > 0.55 ? 48 : 270 + Math.random() * 20,
-      opacity: 0.3 + Math.random() * 0.5,
-      drift: -15 + Math.random() * 30,
+      duration: 14 + Math.random() * 20,
+      size: 1 + Math.random() * 2.5,
+      hue: Math.random() > 0.5 ? 48 : 275,
+      opacity: 0.4 + Math.random() * 0.4,
     }));
   }, []);
 
@@ -26,12 +24,11 @@ const FloatingParticles = () => {
             bottom: "-20px",
             width: `${e.size}px`,
             height: `${e.size}px`,
-            background: `hsl(${e.hue} 90% 58%)`,
+            background: `hsl(${e.hue} 90% 60%)`,
             animationDelay: `${e.delay}s`,
             animationDuration: `${e.duration}s`,
             opacity: e.opacity,
-            boxShadow: `0 0 ${e.glowSize}px hsl(${e.hue} 100% 50% / 0.4), 0 0 ${e.glowSize * 2.5}px hsl(${e.hue} 100% 50% / 0.15)`,
-            filter: `blur(${e.size < 1 ? 1 : 0.3}px)`,
+            boxShadow: `0 0 ${e.size * 4}px hsl(${e.hue} 100% 55% / 0.5), 0 0 ${e.size * 10}px hsl(${e.hue} 100% 55% / 0.2)`,
           }}
         />
       ))}

@@ -24,28 +24,35 @@ const Navbar = () => {
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 2 }}
+        transition={{ duration: 1, delay: 1.8 }}
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ${
           scrolled
-            ? "bg-background/85 backdrop-blur-xl border-b border-border/40"
+            ? "backdrop-blur-2xl border-b"
             : "bg-transparent"
         }`}
+        style={scrolled ? {
+          background: "hsl(260 25% 4% / 0.85)",
+          borderColor: "hsl(48 95% 55% / 0.08)",
+        } : {}}
       >
-        <div className="max-w-6xl mx-auto px-5 md:px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2">
-            <img src={logoJec} alt="JEC" className="h-8 md:h-10 w-auto object-contain" />
+            <img src={logoJec} alt="JEC" className="h-7 sm:h-8 md:h-10 w-auto object-contain drop-shadow-[0_0_6px_hsl(48_100%_55%/0.2)]" />
           </a>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8 lg:gap-10">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="font-montserrat text-xs tracking-[0.3em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group font-medium"
+                className="font-montserrat text-[11px] tracking-[0.3em] uppercase font-medium transition-all duration-300 relative group"
+                style={{ color: "hsl(50 20% 70%)" }}
               >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-full h-px bg-primary/0 group-hover:bg-primary/60 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left" />
+                <span className="group-hover:text-primary transition-colors duration-300">{item.label}</span>
+                <span className="absolute -bottom-1 left-0 w-full h-[1px] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300"
+                  style={{ background: "linear-gradient(90deg, hsl(48 95% 55% / 0.6), hsl(275 85% 55% / 0.4))" }}
+                />
               </a>
             ))}
           </div>
@@ -53,7 +60,8 @@ const Navbar = () => {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden text-foreground/60 hover:text-primary transition-colors p-1"
+            className="md:hidden p-1.5 transition-colors"
+            style={{ color: "hsl(48 95% 55% / 0.6)" }}
             aria-label="Menu"
           >
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -69,11 +77,13 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-background/97 backdrop-blur-2xl flex flex-col items-center justify-center gap-10 md:hidden"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 md:hidden"
+            style={{ background: "hsl(260 25% 4% / 0.97)", backdropFilter: "blur(30px)" }}
           >
             <button
               onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-5 text-foreground/60 hover:text-primary transition-colors p-1"
+              className="absolute top-4 right-4 p-1.5 transition-colors"
+              style={{ color: "hsl(48 95% 55% / 0.6)" }}
               aria-label="Close menu"
             >
               <X size={22} />
@@ -88,7 +98,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3, delay: i * 0.08 }}
-                className="font-cinzel text-2xl tracking-[0.3em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300 font-semibold"
+                className="font-display text-2xl tracking-[0.3em] uppercase font-semibold text-primary text-glow-gold transition-colors duration-300"
               >
                 {item.label}
               </motion.a>
