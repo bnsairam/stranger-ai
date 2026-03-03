@@ -108,7 +108,10 @@ const EventsSection = () => {
                 href={googleFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group hidden md:grid grid-cols-12 items-center py-12 lg:py-14 border-b border-border/15 hover:border-accent/25 transition-all duration-[1000ms] relative overflow-hidden"
+                 className="group hidden md:grid grid-cols-12 items-center py-12 lg:py-14 border-b transition-all duration-[1000ms] relative overflow-hidden"
+                 style={{ borderColor: "hsl(260 12% 14% / 0.3)" }}
+                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "hsl(275 85% 55% / 0.3)"; e.currentTarget.style.boxShadow = "0 1px 20px hsl(275 85% 55% / 0.06)"; }}
+                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = "hsl(260 12% 14% / 0.3)"; e.currentTarget.style.boxShadow = "none"; }}
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
                   style={{ background: `linear-gradient(90deg, hsl(280 60% 45% / 0.07), hsl(48 95% 55% / 0.035), transparent 80%)` }}
@@ -141,7 +144,10 @@ const EventsSection = () => {
                   </p>
                 </div>
                 <div className="col-span-2 flex justify-end relative z-10">
-                  <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-primary border border-primary/15 px-5 lg:px-7 py-2.5 lg:py-3 group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary group-hover:shadow-[0_0_25px_hsl(48_95%_55%/0.25)] transition-all duration-[600ms] font-semibold">
+                  <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-primary border border-primary/20 px-5 lg:px-7 py-2.5 lg:py-3 rounded-sm group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-[600ms] font-semibold"
+                    style={{ boxShadow: "0 0 0 hsl(48 95% 55% / 0)" }}
+                    onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 20px hsl(48 95% 55% / 0.3), 0 0 40px hsl(48 95% 55% / 0.1)"; }}
+                  >
                     Register →
                   </span>
                 </div>
