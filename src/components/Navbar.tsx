@@ -42,7 +42,7 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="font-body text-sm tracking-[0.25em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group"
+                className="font-montserrat text-xs tracking-[0.3em] uppercase text-foreground/60 hover:text-primary transition-colors duration-300 relative group font-medium"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-full h-px bg-primary/0 group-hover:bg-primary/60 transition-all duration-300 scale-x-0 group-hover:scale-x-100 origin-left" />
@@ -88,7 +88,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
                 transition={{ duration: 0.3, delay: i * 0.08 }}
-                className="font-cinzel text-2xl tracking-[0.3em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300"
+                className="font-cinzel text-2xl tracking-[0.3em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300 font-semibold"
               >
                 {item.label}
               </motion.a>
