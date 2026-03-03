@@ -153,10 +153,10 @@ export default function HeroSection() {
           {...fadeUp(0.3)}
           className="flex items-center justify-center gap-6 sm:gap-10 md:gap-16 mb-6 sm:mb-8 flex-wrap"
         >
-          <MagneticLogo src={logoJec} alt="Jeppiaar Engineering College" delay={0.2} />
-          <MagneticLogo src={logoNaac} alt="NAAC A Grade" delay={0.35} />
-          <MagneticLogo src={logoFounder} alt="Col. Dr. Jeppiaar - Founder" delay={0.5} />
-          <MagneticLogo src={logoIet} alt="IET" delay={0.65} />
+          <MagneticLogo src={logoFounder} alt="Col. Dr. Jeppiaar - Founder" delay={0.2} />
+          <MagneticLogo src={logoJec} alt="Jeppiaar Engineering College" delay={0.35} />
+          <MagneticLogo src={logoIet} alt="IET" delay={0.5} />
+          <MagneticLogo src={logoNaac} alt="NAAC A Grade" delay={0.65} />
         </motion.div>
 
         {/* Presents text */}
