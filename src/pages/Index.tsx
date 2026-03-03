@@ -5,6 +5,7 @@ import EventsSection from "@/components/EventsSection";
 import AgendaSection from "@/components/AgendaSection";
 import CoordinatorsSection from "@/components/CoordinatorsSection";
 import ContactSection from "@/components/ContactSection";
+import SectionDivider from "@/components/SectionDivider";
 
 const Index = () => {
   return (
@@ -16,9 +17,13 @@ const Index = () => {
 
         <main className="flex-grow">
           <HeroSection />
+          <SectionDivider />
           <EventsSection />
+          <SectionDivider />
           <AgendaSection />
+          <SectionDivider />
           <CoordinatorsSection />
+          <SectionDivider />
           <ContactSection />
         </main>
       </div>

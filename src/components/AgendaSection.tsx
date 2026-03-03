@@ -125,21 +125,38 @@ const ScheduleRow = ({ item, index, accentColor }: { item: ScheduleItem; index: 
 const SessionCard = ({ session, index }: { session: SessionBlock; index: number }) => (
   <motion.div
     {...fadeUp(index * 0.1)}
-    className="card-stranger rounded-lg p-5 sm:p-7 md:p-8"
+    whileHover={{ y: -4, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+    className="card-stranger rounded-lg p-5 sm:p-7 md:p-8 group relative overflow-hidden animate-border-glow"
   >
+    {/* Hover shimmer */}
+    <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1200ms] ease-out bg-gradient-to-r from-transparent via-primary/[0.03] to-transparent pointer-events-none" />
+
+    {/* Corner accent */}
+    <div className="absolute top-0 right-0 w-12 h-12 pointer-events-none">
+      <div
+        className="absolute top-0 right-0 w-full h-px transition-all duration-700"
+        style={{ background: `linear-gradient(to left, ${session.accentColor.replace(")", " / 0.3)")}, transparent)` }}
+      />
+      <div
+        className="absolute top-0 right-0 h-full w-px transition-all duration-700"
+        style={{ background: `linear-gradient(to bottom, ${session.accentColor.replace(")", " / 0.3)")}, transparent)` }}
+      />
+    </div>
+
     {/* Header */}
     <div className="flex items-start sm:items-center gap-3 sm:gap-4 mb-5 sm:mb-6">
       <div
-        className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-md shrink-0"
+        className="flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-md shrink-0 animate-subtle-float group-hover:scale-110 transition-transform duration-500"
         style={{
           background: `${session.accentColor.replace(")", " / 0.12)")}`,
           color: session.accentColor,
+          animationDelay: `${index * 0.5}s`,
         }}
       >
         {session.icon}
       </div>
       <div className="min-w-0">
-        <h3 className="font-cinzel text-base sm:text-lg md:text-xl font-bold text-foreground leading-tight">
+        <h3 className="font-cinzel text-base sm:text-lg md:text-xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors duration-500">
           {session.title}
         </h3>
         <p className="font-montserrat text-[10px] sm:text-xs text-muted-foreground/60 tracking-wider mt-0.5">
@@ -150,10 +167,10 @@ const SessionCard = ({ session, index }: { session: SessionBlock; index: number 
 
     {/* Meta */}
     <div className="flex flex-wrap gap-3 sm:gap-5 mb-5 sm:mb-6">
-      <span className="flex items-center gap-1.5 font-montserrat text-[10px] sm:text-xs text-accent/50">
+      <span className="flex items-center gap-1.5 font-montserrat text-[10px] sm:text-xs text-accent/50 group-hover:text-accent/80 transition-colors duration-500">
         <MapPin className="h-3 w-3" /> {session.venue}
       </span>
-      <span className="flex items-center gap-1.5 font-montserrat text-[10px] sm:text-xs text-accent/50">
+      <span className="flex items-center gap-1.5 font-montserrat text-[10px] sm:text-xs text-accent/50 group-hover:text-accent/80 transition-colors duration-500">
         <Clock className="h-3 w-3" /> {session.time}
       </span>
     </div>

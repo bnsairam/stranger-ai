@@ -144,10 +144,7 @@ const EventsSection = () => {
                   </p>
                 </div>
                 <div className="col-span-2 flex justify-end relative z-10">
-                  <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-primary border border-primary/20 px-5 lg:px-7 py-2.5 lg:py-3 rounded-sm group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-[600ms] font-semibold"
-                    style={{ boxShadow: "0 0 0 hsl(48 95% 55% / 0)" }}
-                    onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "0 0 20px hsl(48 95% 55% / 0.3), 0 0 40px hsl(48 95% 55% / 0.1)"; }}
-                  >
+                  <span className="font-montserrat text-xs tracking-[0.3em] uppercase text-primary border border-primary/20 px-5 lg:px-7 py-2.5 lg:py-3 rounded-sm group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-[600ms] font-semibold group-hover:shadow-[0_0_20px_hsl(48_95%_55%/0.3),0_0_40px_hsl(48_95%_55%/0.1)]">
                     Register →
                   </span>
                 </div>
